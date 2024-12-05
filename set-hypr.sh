@@ -86,6 +86,7 @@ if [[ $CFG =~ ^[Yy]$ ]]; then
     cp -r dotconfig/rofi ~/.config/ 2>&1 | tee -a $LOG
     cp -r dotconfig/wlogout ~/.config/ 2>&1 | tee -a $LOG
     cp -r dotconfig/waybar ~/.config/ 2>&1 | tee -a $LOG
+    cp -r dotconfig/alacritty ~/.config/ 2>&1 | tee -a $LOG
     
     # Set some files as exacutable 
     chmod +x ~/.config/hypr/xdg-portal-hyprland
