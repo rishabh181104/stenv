@@ -27,12 +27,27 @@ sleep 3
 
 # Function to print error messages
 print_error() {
-    printf " %s%s\n" "$RED" "$1" "$NC" >&2
+  printf " %s%s\n" "$RED" "$1" "$NC" >&2
 }
 
 # Function to print success messages
 print_success() {
-    printf "%s%s%s\n" "$GREEN" "$1" "$NC"
+  printf "%s%s%s\n" "$GREEN" "$1" "$NC"
+}
+
+# Function to handle package conflicts
+handle_conflict() {
+  printf "${YELLOW} A package conflict was detected. How would you like to proceed?\n"
+  printf "1) Skip conflicting package\n"
+  printf "2) Abort installation\n"
+  printf "3) Attempt to resolve automatically\n"
+  read -rp "Enter your choice (1/2/3): " choice
+  case $choice in
+    1) return 0 ;; # Skip conflicting package
+    2) exit 1 ;;   # Abort installation
+    3) return 2 ;; # Attempt to resolve automatically
+    *) printf "${RED} Invalid choice. Aborting.\n"; exit 1 ;;
+  esac
 }
 
 ### Install packages ####
@@ -40,56 +55,63 @@ read -n1 -rep "${CAT} Would you like to install the packages? (y/n)" inst
 echo
 
 if [[ $inst =~ ^[Nn]$ ]]; then
-    printf "${YELLOW} No packages installed. Goodbye! \n"
-            exit 1
-        fi
+  printf "${YELLOW} No packages installed. Goodbye! \n"
+  exit 1
+fi
 
 if [[ $inst =~ ^[Yy]$ ]]; then
-   git_pkgs="grimblast-git hyprpicker-git aylurs-gtk-shell"
-   hypr_pkgs="hyprland wl-clipboard wf-recorder rofi sddm wlogout dunst swaybg kitty alacritty hyprcursor hyprlang noto-fonts noto-fonts-emoji"
-   app_pkgs="nwg-look jq gvfs mpv playerctl pamixer noise-suppression-for-voice networkmanager network-manager-applet"
-   app_pkgs2="neovim xdg-user-dirs brightnessctl thunar power-profiles-daemon waybar"
-   theme_pkgs="nordic-theme papirus-icon-theme ttf-font-awesome starship firefox"
+  git_pkgs="hyprpicker-git aylurs-gtk-shell"
+  hypr_pkgs="hyprland wl-clipboard wf-recorder rofi wlogout dunst swaybg alacritty hyprcursor hyprlang noto-fonts noto-fonts-emoji"
+  app_pkgs="nwg-look jq gvfs mpv playerctl pamixer noise-suppression-for-voice networkmanager network-manager-applet"
+  app_pkgs2="flameshot neovim brightnessctl thunar power-profiles-daemon waybar"
+  theme_pkgs="papirus-icon-theme ttf-font-awesome starship firefox"
 
-    # Check for yay or paru
-    if command -v yay &> /dev/null; then
-        aur_helper="yay"
-    elif command -v paru &> /dev/null; then
-        aur_helper="paru"
+  # Check for yay or paru
+  if command -v yay &>/dev/null; then
+    aur_helper="yay"
+  elif command -v paru &>/dev/null; then
+    aur_helper="paru"
+  else
+    print_error "Neither yay nor paru found. Please install one of them to continue."
+    exit 1
+  fi
+
+  # Install packages and handle conflicts
+  if ! $aur_helper -S --noconfirm $git_pkgs $hypr_pkgs $app_pkgs $app_pkgs2 $theme_pkgs 2>&1 | tee -a $LOG; then
+    if grep -q "conflict" $LOG; then
+      handle_conflict
+      if [[ $? -eq 2 ]]; then
+        $aur_helper -S --noconfirm --overwrite '*' $git_pkgs $hypr_pkgs $app_pkgs $app_pkgs2 $theme_pkgs 2>&1 | tee -a $LOG
+      fi
     else
-        print_error "Neither yay nor paru found. Please install one of them to continue."
-        exit 1
+      print_error " Failed to install additional packages - please check the install.log \n"
+      exit 1
     fi
-
-    if ! $aur_helper -S --noconfirm $git_pkgs $hypr_pkgs $app_pkgs $app_pkgs2 $theme_pkgs 2>&1 | tee -a $LOG; then
-        print_error " Failed to install additional packages - please check the install.log \n"
-        exit 1
-    fi
-    xdg-user-dirs-update
-    echo
-    print_success " All necessary packages installed successfully."
+  fi
+  echo
+  print_success " All necessary packages installed successfully."
 
 else
-    echo
-    print_error " Packages not installed - please check the install.log"
-    sleep 1
+  echo
+  print_error " Packages not installed - please check the install.log"
+  sleep 1
 fi
 
 ### Copy Config Files ###
 read -n1 -rep "${CAT} Would you like to copy config files? (y,n)" CFG
 if [[ $CFG =~ ^[Yy]$ ]]; then
-    printf " Copying config files...\n"
-    cp -r dotconfig/dunst ~/.config/ 2>&1 | tee -a $LOG
-    cp -r dotconfig/hypr ~/.config/ 2>&1 | tee -a $LOG
-    cp -r dotconfig/kitty ~/.config/ 2>&1 | tee -a $LOG
-    cp -r dotconfig/pipewire ~/.config/ 2>&1 | tee -a $LOG
-    cp -r dotconfig/rofi ~/.config/ 2>&1 | tee -a $LOG
-    cp -r dotconfig/wlogout ~/.config/ 2>&1 | tee -a $LOG
-    cp -r dotconfig/waybar ~/.config/ 2>&1 | tee -a $LOG
-    cp -r dotconfig/alacritty ~/.config/ 2>&1 | tee -a $LOG
-    
-    # Set some files as exacutable 
-    chmod +x ~/.config/hypr/xdg-portal-hyprland
+  printf " Copying config files...\n"
+  cp -r dotconfig/dunst ~/.config/ 2>&1 | tee -a $LOG
+  cp -r dotconfig/hypr ~/.config/ 2>&1 | tee -a $LOG
+  cp -r dotconfig/kitty ~/.config/ 2>&1 | tee -a $LOG
+  cp -r dotconfig/pipewire ~/.config/ 2>&1 | tee -a $LOG
+  cp -r dotconfig/rofi ~/.config/ 2>&1 | tee -a $LOG
+  cp -r dotconfig/wlogout ~/.config/ 2>&1 | tee -a $LOG
+  cp -r dotconfig/waybar ~/.config/ 2>&1 | tee -a $LOG
+  cp -r dotconfig/alacritty ~/.config/ 2>&1 | tee -a $LOG
+
+  # Set some files as executable
+  chmod +x ~/.config/hypr/xdg-portal-hyprland
 fi
 
 FONT_DIR="$HOME/.local/share/fonts"
@@ -98,8 +120,8 @@ FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Meslo
 
 # Check if Meslo Nerd-font is already installed
 if fc-list | grep -qi "Meslo"; then
-    echo "Meslo Nerd-fonts are already installed."
-    exit 0
+  echo "Meslo Nerd-fonts are already installed."
+  exit 0
 fi
 
 echo "Installing Meslo Nerd-fonts..."
@@ -109,21 +131,21 @@ mkdir -p "$FONT_DIR"
 
 # Download the font zip file if it doesn't already exist
 if [ ! -f "$FONT_ZIP" ]; then
-    wget -O "$FONT_ZIP" "$FONT_URL" || {
-        echo "Failed to download Meslo Nerd-fonts from $FONT_URL"
-        exit 1
-    }
+  wget -O "$FONT_ZIP" "$FONT_URL" || {
+    echo "Failed to download Meslo Nerd-fonts from $FONT_URL"
+    exit 1
+  }
 else
-    echo "Meslo.zip already exists in $FONT_DIR, skipping download."
+  echo "Meslo.zip already exists in $FONT_DIR, skipping download."
 fi
 
 if [ ! -d "$FONT_DIR/Meslo" ]; then
-    unzip -o "$FONT_ZIP" -d "$FONT_DIR" || {
-        echo "Failed to unzip $FONT_ZIP"
-        exit 1
-    }
+  unzip -o "$FONT_ZIP" -d "$FONT_DIR" || {
+    echo "Failed to unzip $FONT_ZIP"
+    exit 1
+  }
 else
-    echo "Meslo font files already unzipped in $FONT_DIR, skipping unzip."
+  echo "Meslo font files already unzipped in $FONT_DIR, skipping unzip."
 fi
 rm "$FONT_ZIP"
 fc-cache -fv # Rebuild the font cache
@@ -132,41 +154,41 @@ echo "Meslo Nerd-fonts installed successfully"
 ### Enable SDDM Autologin ###
 read -n1 -rep 'Would you like to enable SDDM autologin? (y,n)' SDDM
 if [[ $SDDM == "Y" || $SDDM == "y" ]]; then
-    LOC="/etc/sddm.conf"
-    echo -e "The following has been added to $LOC.\n"
-    echo -e "[Autologin]\nUser = $(whoami)\nSession=hyprland" | sudo tee -a $LOC
-    echo -e "\n"
-    echo -e "Enabling SDDM service...\n"
-    sudo systemctl enable sddm
-    sleep 3
+  LOC="/etc/sddm.conf"
+  echo -e "The following has been added to $LOC.\n"
+  echo -e "[Autologin]\nUser = $(whoami)\nSession=hyprland" | sudo tee -a $LOC
+  echo -e "\n"
+  echo -e "Enabling SDDM service...\n"
+  sudo systemctl enable sddm
+  sleep 3
 fi
 
 # BLUETOOTH
 read -n1 -rep "${CAT} OPTIONAL - Would you like to install Bluetooth packages? (y/n)" BLUETOOTH
 if [[ $BLUETOOTH =~ ^[Yy]$ ]]; then
-    printf " Installing Bluetooth Packages...\n"
- blue_pkgs="bluez bluez-utils blueman"
-    if ! yay -S --noconfirm $blue_pkgs 2>&1 | tee -a $LOG; then
-       	print_error "Failed to install bluetooth packages - please check the install.log"    
+  printf " Installing Bluetooth Packages...\n"
+  blue_pkgs="bluez bluez-utils blueman"
+  if ! yay -S --noconfirm $blue_pkgs 2>&1 | tee -a $LOG; then
+    print_error "Failed to install bluetooth packages - please check the install.log"
     printf " Activating Bluetooth Services...\n"
     sudo systemctl enable --now bluetooth.service
     sleep 2
-    fi
+  fi
 else
-    printf "${YELLOW} No bluetooth packages installed..\n"
-	fi
-    
+  printf "${YELLOW} No bluetooth packages installed..\n"
+fi
+
 ### Script is done ###
 printf "\n${GREEN} Installation Completed.\n"
 echo -e "${GREEN} You can start Hyprland by typing Hyprland (note the capital H).\n"
 read -n1 -rep "${CAT} Would you like to start Hyprland now? (y,n)" HYP
 if [[ $HYP =~ ^[Yy]$ ]]; then
-    if command -v Hyprland >/dev/null; then
-        exec Hyprland
-    else
-         print_error " Hyprland not found. Please make sure Hyprland is installed by checking install.log.\n"
-        exit 1
-    fi
+  if command -v Hyprland >/dev/null; then
+    exec Hyprland
+  else
+    print_error " Hyprland not found. Please make sure Hyprland is installed by checking install.log.\n"
+    exit 1
+  fi
 else
-    exit
+  exit
 fi
