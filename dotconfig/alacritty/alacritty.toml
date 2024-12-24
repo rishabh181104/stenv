@@ -1,20 +1,11 @@
-[general]
-live_config_reload = true
-working_directory = "None"
-
-# Themes --
-import = [ 
-  "~/.config/alacritty/nordic.toml",
-  "~/.config/alacritty/keybinds.toml"
-]
 
 [window]
 title = "Alacritty"
 decorations = "none"
 blur = true
 opacity = 0.9
-padding.x = 10
-padding.y = 10
+padding.x = 3
+padding.y = 3
 
 [window.dimensions]
 columns = 160
@@ -35,7 +26,7 @@ TERM = "xterm-256color"
 #glyph_offset = { x = 1, y = 0 }
 normal.family = "MesloLGS Nerd Font Mono"
 normal.style = "Regular"
-size = 20.0
+size = 14.0
 
 [font.bold]
 family = "MesloLGS Nerd Font Mono"
@@ -44,3 +35,4 @@ style = "Bold"
 [font.italic]
 family = "MesloLGS Nerd Font Mono"
 style = "Italic"
+
