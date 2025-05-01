@@ -3,10 +3,10 @@
 		"position": "top",
 		"height": 24,
 		"spacing": 5,
-		"modules-left": ["sway/workspaces", "sway/mode"],
-		"modules-center": ["sway/window"],
+		"modules-left": ["hyprland/workspaces", "hyprland/mode"],
+		"modules-center": ["hyprland/window"],
 		"modules-right": ["cpu", "memory", "battery", "pulseaudio", "clock", "tray"],
-		"sway/workspaces": {
+		"hyprland/workspaces": {
 			"disable-scroll": true,
 			"all-outputs": true,
 			"format": "{name} {icon}",
@@ -20,7 +20,7 @@
 				"7": "7️⃣"
 			}
 		},
-		"sway/window": {
+		"hyprland/window": {
 			"max-length": 50
 		},
 		"cpu": {
