@@ -35,6 +35,7 @@ require("lazy").setup({
 	"neovim/nvim-lspconfig",
 	"jay-babu/mason-null-ls.nvim",
 	"jose-elias-alvarez/null-ls.nvim",
+	"nvimtools/none-ls.nvim",
 	"VonHeikemen/lsp-zero.nvim",
 
 	-- Completion plugins
