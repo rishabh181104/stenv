@@ -1,0 +1,49 @@
+{
+	"layer": "top",
+		"position": "top",
+		"height": 24,
+		"spacing": 5,
+		"modules-left": ["sway/workspaces", "sway/mode"],
+		"modules-center": ["sway/window"],
+		"modules-right": ["cpu", "memory", "battery", "pulseaudio", "clock", "tray"],
+		"sway/workspaces": {
+			"disable-scroll": true,
+			"all-outputs": true,
+			"format": "{name} {icon}",
+			"format-icons": {
+				"1": "1️⃣",
+				"2": "2️⃣",
+				"3": "3️⃣",
+				"4": "4️⃣",
+				"5": "5️⃣",
+				"6": "6️⃣",
+				"7": "7️⃣"
+			}
+		},
+		"sway/window": {
+			"max-length": 50
+		},
+		"cpu": {
+			"format": "🖥️ CPU {usage}%"
+		},
+		"memory": {
+			"format": "🧠 RAM {}%"
+		},
+		"battery": {
+			"format": "{capacity}% {icon}",
+			"format-icons": ["🪫", "🔋", "🔋", "🔋", "🔋"]
+		},
+		"pulseaudio": {
+			"format": "{volume}% {icon}",
+			"format-muted": "🔇 MUTE",
+			"format-icons": {
+				"default": ["🔈", "🔉", "🔊"]
+			}
+		},
+		"clock": {
+			"format": "🕒 {:%H:%M %Y-%m-%d}"
+		},
+		"tray": {
+			"spacing": 10
+		}
+}
