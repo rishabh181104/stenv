@@ -176,17 +176,17 @@ test -r '~/.opam/opam-init/init.fish' && source '~/.opam/opam-init/init.fish' > 
 # end
 
 
-# # THIS IS FOR THE AUTOMATIC STARTUP OF THE SESSIONS YOU WANT WITH WAYLAND
-# if test -z "$WAYLAND_DISPLAY"; and test (tty) = "/dev/tty1"
-# 	exec dbus-run-session hyprland
-# end
-
-
+# THIS IS FOR THE AUTOMATIC STARTUP OF THE SESSIONS YOU WANT WITH WAYLAND
 if test -z "$WAYLAND_DISPLAY"; and test (tty) = "/dev/tty1"
-
-	set -x XDG_SESSION_TYPE wayland
-	set -x QT_QPA_PLATFORM wayland
-	set -x WLR_RENDERER vulkan
-
-	exec dbus-run-session sway
+	exec dbus-run-session hyprland
 end
+
+
+# if test -z "$WAYLAND_DISPLAY"; and test (tty) = "/dev/tty1"
+#
+# 	set -x XDG_SESSION_TYPE wayland
+# 	set -x QT_QPA_PLATFORM wayland
+# 	set -x WLR_RENDERER vulkan
+#
+# 	exec dbus-run-session sway
+# end
