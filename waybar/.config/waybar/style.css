@@ -1,94 +1,111 @@
-/* Translucent */
+/* ---- 💫 https://github.com/JaKooLit 💫 ---- */
+/* Catppuccin Latte - Wallust - v2 */
 
-@define-color critical #ff0000; /* critical color */
-@define-color warning #f3f809;  /* warning color */
-@define-color fgcolor #ffffff;  /* foreground color */
-@define-color bgcolor #303030;  /* background color */
-@define-color bgcolor #222436;  /* background color */
-@define-color alert   #df3320;
+@define-color white      	#F2F2F2;
+@define-color black      	#000000;
+@define-color text       	#FFFFFF;
+@define-color lightgray  	#686868;
+@define-color darkgray   	#353535;
 
-@define-color accent1 #ff7a93;
-@define-color accent2 #b9f27c;
-@define-color accent3 #ff9e64;
-@define-color accent4 #bb9af7;
-@define-color accent5 #7da6ff;
-@define-color accent6 #0db9d7;
+@define-color transparent	rgba(1, 1, 1, 0.5);
+@define-color teal-trans	rgba(1, 117, 84, 0.5);
+@define-color cyan			rgba(53, 140, 169, 1);
+
+@define-color background-module     @background;
+@define-color background-module2	@color11;
+@define-color border-color          @color12;
+@define-color button-color          @color10;
+@define-color button-hover          @color13;
+
+@import 'wallust/colors-waybar.css';
 
 * {
-font-family: "MesloLGS Nerd Font";
-font-weight: bold;
-min-height: 0;
-/* set font-size to 100% if font scaling is set to 1.00 using nwg-look */
-font-size: 97%;
-font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
+    font-family: "JetBrainsMono Nerd Font";
+    font-weight: bold;
+	min-height: 0;  
+    /* set font-size to 100% if font scaling is set to 1.00 using nwg-look */
+    font-size: 97%;
+    font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
 }
 
 window#waybar {
-    background-color: rgba(0,0,0,0.3);
-    color: #ffffff;
-    transition-property: background-color;
-    transition-duration: .5s;
-    border-radius: 10px;
-}
-
-window#waybar.hidden {
-    opacity: 0.1;
+    background: @background;
+    border-radius:15px;
+	padding-top: 2px;
+	padding-bottom: 0px;
+	padding-right: 4px;
+	padding-left: 4px;
 }
 
 tooltip {
     background: #1e1e2e;
-    opacity: 1.0;
-    border-radius: 10px;
-    border-width: 2px;
+    border-radius: 12px;
+    border-width: 1px;
     border-style: solid;
-    border-color: #11111b;
+    border-color: @border-color;
+    color: #ffffff;
 }
 
-#taskbar button,
+#workspaces {
+    padding: 0px 1px;
+    border-radius: 15px;
+    border-bottom: 2px solid @border-color;
+    font-weight: bold;
+    font-style: normal;
+    opacity: 0.8;
+}
+
+#taskbar button,   
 #workspaces button {
-    background-color: transparent;
-    color: #ffffff;
+    color: @foreground;
     box-shadow: none;
 	text-shadow: none;
-    padding: 4px;
-    border-radius: 9px;
+    border-radius: 30px;
+    padding-left: 4px;
+    padding-right: 4px;
     animation: gradient_f 20s ease-in infinite;
     transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
 #taskbar button.active,
 #workspaces button.active {
-    background-color: transparent;
-    color: @accent1;
+    color: #ffd700;
+    border-radius: 50%;
+    background-color: black;
+    border-radius: 15px;
     padding-left: 8px;
     padding-right: 8px;
     animation: gradient_f 20s ease-in infinite;
     transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
+#workspaces button.focused {
+    color: #d8dee9;
+}
+
+#workspaces button.urgent {
+    color: #11111b;
+    border-radius: 10px;
+}
+
 #taskbar button:hover,
 #workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
-	color: @accent3;
-    padding-left: 2px;
+    color: #ffd700;
+    border-radius: 10px;
+ 	padding-left: 2px;
     padding-right: 2px;
     animation: gradient_f 20s ease-in infinite;
     transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
-#workspaces button.focused {
-    background-color: #bbccdd;
-    color: @accent2;
-    /* box-shadow: inset 0 -3px #ffffff; */
-}
-
-#workspaces button.urgent {
-    background-color: #eb4d4b;
-}
-
-#mode {
-    background-color: #64727D;
-    border-bottom: 3px solid #ffffff;
+/*-----module groups----*/
+.modules-center {
+    background-color: @background-module2;
+    border-radius: 10px;
+    padding: 4px;
+	border-bottom: 2px solid @border-color;
+	border-right: 1px solid @button-hover;
+	border-left: 1px solid @button-hover;
 }
 
 #backlight,
@@ -147,46 +164,77 @@ tooltip {
 #custom-weather.showyIcyDay,
 #custom-weather.snowyIcyNight,
 #custom-weather.sunnyDay {
-	padding-top: 4px;
-	padding-bottom: 4px;
+    color: @foreground;
 	padding-right: 6px;
-	padding-left: 6px;
+	padding-left: 6px;;
 }
 
-/* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
+#temperature.critical {
+    background-color: #ff0000;
 }
-
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
-}
-
-#clock {
-    color: @accent2;
-}
-
-#custom-updater {
-    color: #7287fd;
-}
-
-#battery {
-    color: @accent5;
-}
-
-/* #battery.charging {
-    color: #ffffff;
-    background-color: #26A65B;
-} */
 
 @keyframes blink {
     to {
-        background-color: #ffffff;
-        color: #333333;
+        color: #000000;
     }
 }
 
+#backlight-slider slider,
+#pulseaudio-slider slider {
+    min-width: 0px;
+    min-height: 0px;
+    opacity: 0;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+}
+
+#backlight-slider trough,
+#pulseaudio-slider trough {
+    min-width: 80px;
+    min-height: 5px;
+    border-radius: 5px;
+    background-color: #22252a;
+}
+
+#backlight-slider highlight,
+#pulseaudio-slider highlight {
+    min-height: 10px;
+    border-radius: 5px;
+    background-color: #ba5663;
+}
+
+#pulseaudio-slider,
+#pulseaudio {
+	color: @color13;
+}
+
+#pulseaudio.muted {
+    color: red;
+}
+
+#memory {
+	color: @sapphire;
+}
+
+#cpu {
+	color: @mauve;
+}
+
+#battery {
+	color: @rosewater;
+}
+
+#disk {
+	color: @sky;
+}
+
+#temperature.critical {
+    background-color: @red;
+}
+
 #battery.critical:not(.charging) {
-    color: @critical;
+	color: #f53c3c;
 	animation-name: blink;
 	animation-duration: 3.0s;
 	animation-timing-function: steps(12);
@@ -194,101 +242,10 @@ tooltip {
 	animation-direction: alternate;
 }
 
-label:focus {
-    background-color: #000000;
-}
-
-#custom-menu{
-    color: #FFFFFF;
-    /*padding: 3px;*/
-}
-
-#custom-keyboard,
-#cpu {
-    color: @accent1;
-}
-
-#memory {
-    color: @accent3;
-}
-
-#backlight {
-    color: #cdd6f4;
-}
-
-#bluetooth {
-    color: #1e66f5;
-}
-
-#network {
-    color: @accent3;
-}
-
-#network.disconnected {
-    color: @alert;
-}
-
-#pulseaudio {
-    color: @accent4;
-}
-
-#pulseaudio-muted {
-    color: @accent2;
-}
-#wireplumber {
-    color: @accent4;
-}
-
-#wireplumber-muted {
-    color: @accent2;
-}
-
-#pluseaudio-source-muted{
-    color: #a0a0a0;
-}
-
-#custom-power {
-    color: #cc3436;
-}
-
-#disk {
-    color: @accent5;
-}
-#custom-power_profile {
-    color: @accent3;
-}
-#custom-media {
-    background-color: #66cc99;
-    color: #2a5c45;
-    min-width: 100px;
-}
-
-#custom-weather {
-    color: #66cc99;
-}
-
-#custom-lock {
-    color: #ffa000;
-}
-
-#keyboard-state,
-#temperature {
-    color: @accent6;
-    /* background-color: #f0932b; */
-}
-
-#temperature.critical {
-    background-color: @critical;
-}
-
-#tray {
-    /* background-color: #505050; */
-}
-
 #custom-hypridle,
+#custom-lock,
 #idle_inhibitor {
-	color: #f9e2af;
-    /*background-color: #2d3436;*/
+    color: @teal;
 }
 
 /*-----Indicators----*/
@@ -297,50 +254,13 @@ label:focus {
 	color: #39FF14;
 }
 
-#mpd {
-    color: #2a5c45;
+#clock {
+	color: @foreground;
+    border-radius: 15px;
 }
 
-#mpd.disconnected {
-    background-color: #f53c3c;
+#custom-updates {
+    color: @yellow;
 }
-
-#mpd.stopped {
-    background-color: #90b1b1;
-}
-
-#mpd.paused {
-    background-color: #51a37a;
-}
-
-#custom-language {
-    color: @accent5;
-    min-width: 16px;
-}
-
-#custom-separator {
-    color: #606060;
-}
-
-#backlight-slider slider,
-#pulseaudio-slider slider {
-	min-width: 0px;
-	min-height: 0px;
-	opacity: 0;
-	background-image: none;
-	border: none;
-	box-shadow: none;
-}
-
-#backlight-slider trough,
-#pulseaudio-slider trough {
-	min-width: 80px;
-	min-height: 5px;
-	border-radius: 5px;
-}
-
-#backlight-slider highlight,
-#pulseaudio-slider highlight {
-	min-height: 10px;
-	border-radius: 5px;
-}
+#swaync{
+    color: #ffd700;}
