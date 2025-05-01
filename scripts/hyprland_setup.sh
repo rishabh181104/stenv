@@ -155,6 +155,8 @@ PACKAGES=(
 	kitty
 	mako
 	neovim
+	fzf
+	vim
 	rofi
 	starship
 	wlogout
