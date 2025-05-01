@@ -1,6 +1,6 @@
 {
 	"label" : "lock",
-		"action" : "wlogout",
+		"action" : "hyprlock",
 		"text" : "Lock",
 		"keybind" : "l"
 }
