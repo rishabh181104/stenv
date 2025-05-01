@@ -105,6 +105,14 @@ PACKAGES=(
 	wlogout
 	wl-clipboard
 	libwlroots
+	git
+	cargo
+	rustup
+	go
+	nodejs
+	npm
+	brightnesscrtl
+	pavucontrol
 )
 
 # Function to install packages
