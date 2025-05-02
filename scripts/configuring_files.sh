@@ -27,7 +27,7 @@ for DIR_NAME in "${DIRS_TO_REPLACE[@]}"; do
     fi
 
     echo "📁 Copying $SRC to $TARGET_BASE"
-    cp -r "$SRC" "$TARGET_BASE"
+    ln -s "$SRC" "$TARGET_BASE"
 done
 
 # === Replace Files ===
@@ -47,7 +47,7 @@ for FILE_NAME in "${FILES_TO_REPLACE[@]}"; do
     fi
 
     echo "📄 Copying $SRC to $TARGET_BASE"
-    cp "$SRC" "$TARGET_BASE"
+    ln -s "$SRC" "$TARGET_BASE"
 done
 
 echo "✅ All done."
