@@ -35,10 +35,6 @@ fi
 if ! command_exists gsettings; then
     sudo zypper install -y glib2-tools
 fi
-# For KDE GTK integration
-if ! command_exists gtk3-engines; then
-    sudo zypper install -y gtk3-engines
-fi
 
 # Step 2: Clone the Flat-Remix-GTK repository
 echo "Cloning Flat-Remix-GTK repository..."
