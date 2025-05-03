@@ -113,7 +113,8 @@ alias topcpu="/bin/ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10"
 alias f="find . | grep "
 alias checkcommand="type -t"
 alias openports='netstat -nape --inet'
-alias rebootsafe='sudo shutdown -r now'
+alias reboot='sudo systemctl restart'
+alias logout='loginctl kill-session $XDG_SESSION_ID'
 alias shutdown='sudo shutdown now'
 alias diskspace="du -S | sort -n -r |more"
 alias folders='du -h --max-depth=1'
