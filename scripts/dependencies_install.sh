@@ -78,7 +78,7 @@ EOF
 echo -e "${NC}"
 
 print_header "Hyprland Setup Script"
-echo -e "${WHITE}This script will install and configure Hyprland and its dependencies.${NC}\n"
+echo -e "${WHITE}This script will install and configure your prefered env and its dependencies.${NC}\n"
 
 # Function to show spinner with enhanced visuals
 spinner() {
@@ -147,7 +147,7 @@ PACKAGES=(
 	swww
 	blueman
 	google-noto-coloremoji-fonts
-	emojione-color-fonts
+	emojione-color-font
 	fastfetch
 	foot
 	fish
@@ -157,19 +157,23 @@ PACKAGES=(
 	neovim
 	fzf
 	vim
-	rofi
+	rofi-wayland
 	starship
 	wlogout
 	wl-clipboard
-	libwlroots
+	libwlroots12
 	git
-	cargo
 	rustup
 	go
 	nodejs
 	npm
 	brightnessctl
 	pavucontrol
+	i3
+	i3status
+	picom
+	flameshot
+	ghostty
 )
 
 # Function to install packages
@@ -184,7 +188,7 @@ install_packages() {
 	print_header "Installing Packages"
 	print_warning "This may take a while. Please be patient..."
 	progress_bar 5 &
-	if ! sudo zypper install -y "${PACKAGES[@]}"; then
+	if ! sudo zypper install "${PACKAGES[@]}"; then
 		print_error "Failed to install packages"
 		exit 1
 	fi
@@ -193,7 +197,7 @@ install_packages() {
 	print_success "All packages installed successfully"
 	print_header "Installation Complete"
 	echo -e "${WHITE}Your system is now ready to rock! 🚀${NC}"
-	echo -e "${PURPLE}Thank you for using the Hyprland Setup Script!${NC}"
+	echo -e "${PURPLE}Thank you for using the Setup Script!${NC}"
 	print_separator
 }
 
