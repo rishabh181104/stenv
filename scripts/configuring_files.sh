@@ -5,10 +5,10 @@ SOURCE_BASE="$HOME/ste-hypr"
 TARGET_BASE="$HOME/.config"
 
 # List of directories to replace
-DIRS_TO_REPLACE=("fastfetch" "foot" "kitty" "nvim" "wallust" "wlogout" "fish" "hypr" "mako" "rofi" "waybar")
+DIRS_TO_REPLACE=("fastfetch" "foot" "kitty" "nvim" "wallust" "wlogout" "fish" "hypr" "mako" "rofi" "waybar" "i3" "i3status" "picom")
 
 # List of files to replace
-FILES_TO_REPLACE=("starship.toml")
+FILES_TO_REPLACE=("starship.toml" ".xinitrc")
 
 # === Replace Directories ===
 echo "🔁 Replacing Directories..."
