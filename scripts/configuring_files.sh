@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Base paths
-SOURCE_BASE="$HOME/ste-hypr"
+SOURCE_BASE="$HOME/stenv"
 TARGET_BASE="$HOME/.config"
 
 # List of directories to replace
