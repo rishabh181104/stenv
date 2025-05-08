@@ -28,6 +28,23 @@ opt.timeoutlen = 500
 opt.splitbelow = true
 opt.splitright = true
 
+-- ThePrimeagen sets
+opt.wrap = false
+
+opt.swapfile = false
+opt.backup = false
+opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+opt.undofile = true
+
+opt.hlsearch = false
+opt.incsearch = true
+
+opt.scrolloff = 8
+opt.signcolumn = "yes"
+opt.isfname:append("@-@")
+
+opt.updatetime = 50
+
 -- Keymaps
 local map = vim.keymap.set
 map("n", "<leader>w", ":write<CR>", { desc = "Save file" })
