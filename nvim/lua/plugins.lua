@@ -20,6 +20,7 @@ vim.cmd([[
 
   " File navigation
   Plug 'ThePrimeagen/harpoon', { 'branch': 'harpoon2' }
+  Plug 'nvim-lua/plenary.nvim'
 
   " Syntax highlighting
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
@@ -28,9 +29,7 @@ vim.cmd([[
   Plug 'nvim-lualine/lualine.nvim'
 
   " File explorer
-  Plug 'nvim-neo-tree/neo-tree.nvim', { 'branch': 'v3.x' }
-  Plug 'MunifTanjim/nui.nvim'               " Neo-tree dependency
-  Plug 'nvim-lua/plenary.nvim'              " Dependency for neo-tree, harpoon
+  Plug 'stevearc/oil.nvim'
 
   " Git integration
   Plug 'lewis6991/gitsigns.nvim'

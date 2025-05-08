@@ -16,7 +16,7 @@ local plugin_settings = {
   "harpoon",
   "treesitter",
   "lualine",
-  "neo-tree",
+  "oil",
   "gitsigns",
   "autopairs",
   "debugger",
