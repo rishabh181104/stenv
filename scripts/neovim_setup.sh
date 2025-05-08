@@ -38,6 +38,7 @@ if command_exists npm; then
     sudo npm install -g typescript-language-server vscode-langservers-extracted # JS/TS, HTML, CSS
     sudo npm install -g pyright # Python
     sudo npm install -g sql-language-server # SQL
+    sudo npm install -g prettier
 else
     echo "Error: npm not found. Skipping LSP server installation."
     exit 1
@@ -49,11 +50,11 @@ if ! command_exists rustup; then
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
     source "$HOME/.cargo/env"
 fi
-cargo install --locked rust-analyzer
+cargo install stylua 
 
 # Install clangd (for C++)
 echo "Installing clangd..."
-sudo zypper install -y clang
+sudo zypper install -y clang astyle
 
 # Install Java (for jdtls)
 echo "Installing Java..."
@@ -61,7 +62,7 @@ sudo zypper install -y java-17-openjdk java-17-openjdk-devel
 
 # Install Python and pip (for debugpy, Jupyter, IPython)
 echo "Installing Python and pip..."
-sudo zypper install -y python313 python313-pip python313-debugpy python313-ipython
+sudo zypper install -y python313 python313-pip python313-debugpy python313-ipython python313-black
 # pip3 install --user debugpy jupytext ipython
 
 # Install PostgreSQL client (for vim-dadbod)

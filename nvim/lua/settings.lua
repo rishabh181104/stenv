@@ -8,10 +8,12 @@ opt.cursorline = true
 opt.showmode = false
 
 -- Indentation
-opt.tabstop = 2
-opt.shiftwidth = 2
+opt.tabstop = 4
+opt.shiftwidth = 4
+opt.softtabstop = 4
 opt.expandtab = true
 opt.smartindent = true
+opt.autoindent = true
 
 -- Search
 opt.ignorecase = true
@@ -38,3 +40,4 @@ map("x", "jk", "<C-c>", { desc = "Toogle to normal mode"})
 map("c", "jk", "<C-c>", { desc = "Toogle to normal mode"})
 map("t", "jk", "<C-c>", { desc = "Toogle to normal mode"})
 map("o", "jk", "<C-c>", { desc = "Toogle to normal mode"})
+map("n", "<leader>ter", ":terminal<CR>", { desc = "Opens a terminal"})

@@ -60,5 +60,8 @@ vim.cmd([[
   " which key"
   Plug 'folke/which-key.nvim'
 
+  "Auto indenting/formatting"
+  Plug 'stevearc/conform.nvim'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   call plug#end()
 ]])
