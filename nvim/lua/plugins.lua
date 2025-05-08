@@ -56,6 +56,9 @@ vim.cmd([[
   " Regex testing (cybersecurity)
   Plug 'tpope/vim-abolish'                  " Advanced regex tools
   Plug 'markonm/traces.vim'                 " Live regex preview
+
+  " which key"
   Plug 'folke/which-key.nvim'
+
   call plug#end()
 ]])
