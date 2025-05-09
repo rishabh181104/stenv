@@ -7,13 +7,13 @@ vim.cmd([[
   Plug 'ibhagwan/fzf-lua', { 'on': ['FzfLua'] }
 
   " LSP and completion
-  Plug 'neovim/nvim-lspconfig'              " LSP client
-  Plug 'hrsh7th/nvim-cmp'                   " Completion engine
-  Plug 'hrsh7th/cmp-nvim-lsp'               " LSP source
-  Plug 'hrsh7th/cmp-buffer'                 " Buffer source
-  Plug 'hrsh7th/cmp-path'                   " Path source
-  Plug 'L3MON4D3/LuaSnip'                   " Snippet engine
-  Plug 'saadparwaiz1/cmp_luasnip'           " LuaSnip source
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'hrsh7th/nvim-cmp'
+  Plug 'hrsh7th/cmp-nvim-lsp'
+  Plug 'hrsh7th/cmp-buffer'
+  Plug 'hrsh7th/cmp-path'
+  Plug 'L3MON4D3/LuaSnip'
+  Plug 'saadparwaiz1/cmp_luasnip'
 
   " Fuzzy finder (Picker)
   Plug 'ibhagwan/fzf-lua', { 'branch': 'main' }
@@ -63,5 +63,6 @@ vim.cmd([[
   "Auto indenting/formatting"
   Plug 'stevearc/conform.nvim'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
   call plug#end()
 ]])

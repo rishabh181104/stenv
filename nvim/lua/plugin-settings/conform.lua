@@ -31,7 +31,7 @@ require("conform").setup({
 })
 
 -- Optional: Keymap to manually trigger formatting
-vim.api.nvim_set_keymap("n", "<leader>f", "<cmd>lua require('conform').format({ async = true, lsp_fallback = true })<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>for", "<cmd>lua require('conform').format({ async = true, lsp_fallback = true })<CR>", { noremap = true, silent = true })
 
 -- Configure nvim-treesitter for autoindenting
 require("nvim-treesitter.configs").setup({

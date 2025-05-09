@@ -15,7 +15,7 @@ sudo zypper update -y
 
 # Install basic tools
 echo "Installing basic tools (git, curl, neovim, unzip, make)..."
-sudo zypper install -y git curl neovim unzip make lua-language-server
+sudo zypper install -y git curl neovim unzip make lua-language-server StyLua
 
 # Install Vim-Plug
 echo "Installing Vim-Plug..."
@@ -50,7 +50,6 @@ if ! command_exists rustup; then
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
     source "$HOME/.cargo/env"
 fi
-cargo install stylua 
 
 # Install clangd (for C++)
 echo "Installing clangd..."
