@@ -8,9 +8,9 @@ opt.cursorline = true
 opt.showmode = false
 
 -- Indentation
-opt.tabstop = 4
-opt.shiftwidth = 4
-opt.softtabstop = 4
+opt.tabstop = 2
+opt.shiftwidth = 2
+opt.softtabstop = 2
 opt.expandtab = true
 opt.smartindent = true
 opt.autoindent = true
@@ -43,13 +43,12 @@ opt.scrolloff = 8
 opt.signcolumn = "yes"
 opt.isfname:append("@-@")
 
-opt.updatetime = 50
-
 -- Keymaps
 local map = vim.keymap.set
+
 map("n", "<leader>w", ":write<CR>", { desc = "Save file" })
 map("n", "<leader>q", ":quit<CR>", { desc = "Quit" })
-map("n", "<leader>e", ":NeoTreeFocusToggle<CR>", { desc = "Toggle file explorer" })
+
 map("i", "jk", "<C-c>", { desc = "Toogle to normal mode"})
 map("v", "jk", "<C-c>", { desc = "Toogle to normal mode"})
 map("s", "jk", "<C-c>", { desc = "Toogle to normal mode"})
@@ -57,4 +56,12 @@ map("x", "jk", "<C-c>", { desc = "Toogle to normal mode"})
 map("c", "jk", "<C-c>", { desc = "Toogle to normal mode"})
 map("t", "jk", "<C-c>", { desc = "Toogle to normal mode"})
 map("o", "jk", "<C-c>", { desc = "Toogle to normal mode"})
+
 map("n", "<leader>ter", ":terminal<CR>", { desc = "Opens a terminal"})
+
+map({ "n", "v" }, "<Leader>y", '"+y', { noremap = true, silent = true, desc = "Yank to system clipboard" })
+
+map("n", "<C-h>", "<C-w>h", { desc = "Move to left split" })
+map("n", "<C-j>", "<C-w>j", { desc = "Move to below split" })
+map("n", "<C-k>", "<C-w>k", { desc = "Move to above split" })
+map("n", "<C-l>", "<C-w>l", { desc = "Move to right split" })

@@ -8,19 +8,19 @@ require("dap-python").setup("python")
 
 -- C++ DAP
 dap.adapters.cppdbg = {
-  id = "cppdbg",
-  type = "executable",
-  command = "gdb",
+    id = "cppdbg",
+    type = "executable",
+    command = "gdb",
 }
 dap.configurations.cpp = {
-  {
-    name = "Launch",
-    type = "cppdbg",
-    request = "launch",
-    program = "${workspaceFolder}/a.out",
-    cwd = "${workspaceFolder}",
-    stopAtEntry = true,
-  },
+    {
+        name = "Launch",
+        type = "cppdbg",
+        request = "launch",
+        program = "${workspaceFolder}/a.out",
+        cwd = "${workspaceFolder}",
+        stopAtEntry = true,
+    },
 }
 
 -- Keymaps

@@ -3,8 +3,6 @@ vim.cmd([[
 
   " Theme
   Plug 'EdenEast/nightfox.nvim' " Vim-Plug
-  
-  Plug 'ibhagwan/fzf-lua', { 'on': ['FzfLua'] }
 
   " LSP and completion
   Plug 'neovim/nvim-lspconfig'

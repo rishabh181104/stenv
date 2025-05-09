@@ -9,25 +9,26 @@ require("plugins")
 
 -- Load plugin settings
 local plugin_settings = {
-  "colors",
-  "whichkey",
-  "lsp",
-  "fzf-lua",
-  "harpoon",
-  "treesitter",
-  "lualine",
-  "oil",
-  "gitsigns",
-  "autopairs",
-  "debugger",
-  "jupyter",
-  "sql",
-  "regex",
+    "colors",
+    "whichkey",
+    "lsp",
+    "fzf-lua",
+    "harpoon",
+    "treesitter",
+    "lualine",
+    "oil",
+    "gitsigns",
+    "autopairs",
+    "debugger",
+    "jupyter",
+    "sql",
+    "regex",
+    "autoindent",
 }
 
 for _, module in ipairs(plugin_settings) do
-  local ok, err = pcall(require, "plugin-settings." .. module)
-  if not ok then
-    vim.notify("Error loading plugin-settings/" .. module .. ": " .. err, vim.log.levels.ERROR)
-  end
+    local ok, err = pcall(require, "plugin-settings." .. module)
+    if not ok then
+        vim.notify("Error loading plugin-settings/" .. module .. ": " .. err, vim.log.levels.ERROR)
+    end
 end

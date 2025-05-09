@@ -1,18 +1,18 @@
 local fzf = require("fzf-lua")
 
 fzf.setup({
-  winopts = {
-    height = 0.9,
-    width = 0.9,
-    preview = {
+    winopts = {
+        height = 0.9,
+        width = 0.9,
+        preview = {
             hidden = "hidden",
         },
-  },
+    },
     keymap = {
-    fzf = {
-      ["tab"] = "down", -- Rebind <Tab> to cycle down instead of toggling preview
-      ["shift-tab"] = "up", -- Rebind <Shift-Tab> to cycle up
-      ["ctrl-p"] = "toggle-preview", -- Use a different key to toggle the preview
+        fzf = {
+            ["tab"] = "down", -- Rebind <Tab> to cycle down instead of toggling preview
+            ["shift-tab"] = "up", -- Rebind <Shift-Tab> to cycle up
+            ["ctrl-p"] = "toggle-preview", -- Use a different key to toggle the preview
         },
     },
 })
