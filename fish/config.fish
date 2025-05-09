@@ -1,5 +1,5 @@
 if status is-interactive
-	fastfetch
+  fastfetch
 end
 starship init fish | source
 
@@ -114,7 +114,7 @@ alias topcpu="/bin/ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10"
 alias f="find . | grep "
 alias checkcommand="type -t"
 alias openports='netstat -nape --inet'
-alias reboot='sudo systemctl restart'
+alias reboot='systemctl restart'
 alias logout='loginctl kill-session $XDG_SESSION_ID'
 alias shutdown='sudo shutdown now'
 alias diskspace="du -S | sort -n -r |more"
@@ -135,28 +135,28 @@ alias kssh="kitty +kitten ssh"
 
 # Functions
 function fish_greeting
-	echo "THIS IS FISH, BRUV!:)"
+  echo "THIS IS FISH, BRUV!:)"
 end
 
 function mkcd
-	mkdir -p $argv[1]; and cd $argv[1]
+  mkdir -p $argv[1]; and cd $argv[1]
 end
 
 function reload
-	exec fish
+  exec fish
 end
 
 function fish_prompt
-	starship prompt
+  starship prompt
 end
 
 function brave-nvidia
-	env __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia brave-browser --use-gl=desktop
+  env __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia brave-browser --use-gl=desktop
 end
 
 # Source other configs if necessary
 if test -f ~/.config/fish/local.fish
-	source ~/.config/fish/local.fish
+  source ~/.config/fish/local.fish
 end
 
 export WINEESYNC=1
@@ -180,7 +180,7 @@ test -r '~/.opam/opam-init/init.fish' && source '~/.opam/opam-init/init.fish' > 
 
 # THIS IS FOR THE AUTOMATIC STARTUP OF THE SESSIONS YOU WANT WITH WAYLAND
 if test -z "$WAYLAND_DISPLAY"; and test (tty) = "/dev/tty1"
-	exec dbus-run-session hyprland
+  exec dbus-run-session hyprland
 end
 
 
