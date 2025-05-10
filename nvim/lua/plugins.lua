@@ -65,5 +65,8 @@ vim.cmd([[
   "Lazygit integration in neovim"
   Plug 'kdheepak/lazygit.nvim'
 
+  "Color's in any file"
+  Plug 'catgoose/nvim-colorizer.lua'
+
   call plug#end()
 ]])
