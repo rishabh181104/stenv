@@ -172,16 +172,16 @@ test -r '~/.opam/opam-init/init.fish' && source '~/.opam/opam-init/init.fish' > 
 # END opam configuration
 
 
-# # THIS IS FOR THE AUTOMATIC STARTUP OF THE SESSIONS YOU WANT WITH XORG
-# if test -z "$DISPLAY"; and test (tty) = "/dev/tty1"
-# 	exec startx
-# end
+# THIS IS FOR THE AUTOMATIC STARTUP OF THE SESSIONS YOU WANT WITH XORG
+if test -z "$DISPLAY"; and test (tty) = "/dev/tty1"
+  exec startx
+end
 
 
 # THIS IS FOR THE AUTOMATIC STARTUP OF THE SESSIONS YOU WANT WITH WAYLAND
-if test -z "$WAYLAND_DISPLAY"; and test (tty) = "/dev/tty1"
-  exec dbus-run-session hyprland
-end
+# if test -z "$WAYLAND_DISPLAY"; and test (tty) = "/dev/tty1"
+#   exec dbus-run-session hyprland
+# end
 
 
 # if test -z "$WAYLAND_DISPLAY"; and test (tty) = "/dev/tty1"

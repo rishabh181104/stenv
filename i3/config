@@ -19,7 +19,7 @@ exec --no-startup-id "feh --randomize --bg-fill ~/Wallpapers/Pictures/*"
 set $refresh_i3status killall -SIGUSR1 i3status
 
 set $terminal ghostty
-set $browser Min --enable-accelerated-video-decode --enable-accelerated-video-encode
+set $browser min --enable-accelerated-video-decode --enable-accelerated-video-encode
 set $browser1 google-chrome-stable --enable-accelerated-video-decode --enable-accelerated-video-encode
 set $filemanager thunar
 set $editor cursor.AppImage
@@ -126,6 +126,9 @@ set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -135,6 +138,9 @@ bindsym $mod+4 workspace number $ws4
 bindsym $mod+5 workspace number $ws5
 bindsym $mod+6 workspace number $ws6
 bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -144,6 +150,9 @@ bindsym $mod+Shift+4 move container to workspace number $ws4
 bindsym $mod+Shift+5 move container to workspace number $ws5
 bindsym $mod+Shift+6 move container to workspace number $ws6
 bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -177,27 +186,27 @@ mode "resize" {
     bindsym $mod+r mode "default"
 }
 
-# class                 border  bground text    indicator child_border
-client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
-client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
-client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
-client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
-client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+# class                 border   bground  text     indicator child_border
+client.focused          #5E81AC #5E81ACCC #E6E6E6 #5E81AC   #5E81AC
+client.focused_inactive #2E3440 #2E3440CC #C7C7C7 #2E3440   #2E3440
+client.unfocused        #1C2526 #1C2526CC #C7C7C7 #1C2526   #1C2526
+client.urgent           #BF616A #BF616ACC #E6E6E6 #BF616A   #BF616A
+client.placeholder      #1C2526 #1C2526CC #E6E6E6 #1C2526   #1C2526
 
-client.background       #F8F8F2
+client.background       #E6E6E6
 
 # Start i3bar to display a workspace bar (plus the system information i3status
     bar {
     status_command i3status  # Or your chosen status tool
     colors {
-    background #282A36
-    statusline #F8F8F2
-    separator  #44475A
+    background #1C2526CC
+    statusline #E6E6E6
+    separator  #2E3440
 
-    focused_workspace  #44475A #44475A #F8F8F2
-    active_workspace   #282A36 #44475A #F8F8F2
-    inactive_workspace #282A36 #282A36 #BFBFBF
-    urgent_workspace   #FF5555 #FF5555 #F8F8F2
-    binding_mode       #FF5555 #FF5555 #F8F8F2
+    focused_workspace  #5E81AC #5E81ACCC #E6E6E6
+    active_workspace   #2E3440 #2E3440CC #E6E6E6
+    inactive_workspace #1C2526 #1C2526CC #C7C7C7
+    urgent_workspace   #BF616A #BF616ACC #E6E6E6
+    binding_mode       #BF616A #BF616ACC #E6E6E6
     }
     }
