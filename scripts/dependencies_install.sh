@@ -202,6 +202,7 @@ PACKAGES=(
   xorg-scripts
   xorg-sgml-doctools
   xorgproto-devel
+  xclip
 )
 
 # Function to install packages
