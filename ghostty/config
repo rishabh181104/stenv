@@ -15,6 +15,8 @@ cursor-style-blink = false
 
 clipboard-write = allow
 clipboard-trim-trailing-spaces = true
+clipboard-paste-protection = false
+clipboard-paste-bracketed-safe = false
 
 # Background and transparency settings
 background = #000000
