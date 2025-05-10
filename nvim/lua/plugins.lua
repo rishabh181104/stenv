@@ -62,5 +62,8 @@ vim.cmd([[
   Plug 'stevearc/conform.nvim'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
+  "Lazygit integration in neovim"
+  Plug 'kdheepak/lazygit.nvim'
+
   call plug#end()
 ]])

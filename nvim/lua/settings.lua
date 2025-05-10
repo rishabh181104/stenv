@@ -65,3 +65,5 @@ map("n", "<C-h>", "<C-w>h", { desc = "Move to left split" })
 map("n", "<C-j>", "<C-w>j", { desc = "Move to below split" })
 map("n", "<C-k>", "<C-w>k", { desc = "Move to above split" })
 map("n", "<C-l>", "<C-w>l", { desc = "Move to right split" })
+
+map("n", "<leader>git", ":LazyGitFilter<CR>" , {desc = "Lazygit"})
