@@ -175,6 +175,33 @@ PACKAGES=(
   flameshot
   ghostty
   thunar
+  xorg-x11
+  xorg-x11-driver-video
+  xorg-x11-essentials
+  xorg-x11-fonts
+  xorg-x11-fonts-converted
+  xorg-x11-fonts-core
+  xorg-x11-fonts-legacy
+  xorg-x11-server
+  xorg-x11-server-Xvfb
+  xorg-x11-util-devel
+  perl-X11-Protocol
+  libxkbcommon-x11-0
+  libxkbcommon-x11-0-32bit
+  libxkbcommon-x11-devel
+  libX11-6
+  libX11-data
+  libX11-devel
+  libX11-xcb1
+  libva-x11-2
+  libQt5X11Extras5
+  libnvidia-egl-x111
+  ghostscript-x11
+  dbus-1-x11
+  xorg-cf-files
+  xorg-scripts
+  xorg-sgml-doctools
+  xorgproto-devel
 )
 
 # Function to install packages
