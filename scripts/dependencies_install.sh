@@ -203,6 +203,7 @@ PACKAGES=(
   xorg-sgml-doctools
   xorgproto-devel
   xclip
+  lxappearance
 )
 
 # Function to install packages
