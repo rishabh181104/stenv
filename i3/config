@@ -8,7 +8,6 @@ exec --no-startup-id xss-lock -- i3lock --color=000000 --ignore-empty-password -
 exec --no-startup-id flameshot
 exec --no-startup-id nm-applet
 exec --no-startup-id picom
-exec --no-startup-id easyeffects
 exec --no-startup-id blueman-applet
 exec --no-startup-id xinput set-prop "Elan Touchpad" "libinput Tapping Enabled" 1
 exec --no-startup-id xset s off
@@ -19,8 +18,8 @@ exec --no-startup-id "feh --randomize --bg-fill ~/Wallpapers/Pictures/*"
 
 set $refresh_i3status killall -SIGUSR1 i3status
 
-set $terminal alacritty
-set $browser ~/./zen.AppImage --enable-accelerated-video-decode --enable-accelerated-video-encode
+set $terminal ghostty
+set $browser Min --enable-accelerated-video-decode --enable-accelerated-video-encode
 set $browser1 google-chrome-stable --enable-accelerated-video-decode --enable-accelerated-video-encode
 set $filemanager thunar
 set $editor cursor.AppImage
@@ -34,7 +33,7 @@ new_float pixel 4
 
 # Gaps (if you use i3-gaps)
 gaps inner 1
-gaps outer 3
+gaps outer 1
 
 bindsym $mod+space exec "dmenu_run -nf '#F8F8F2' -nb '#282A36' -sb '#6272A4' -sf '#F8F8F2' -fn 'monospace-20' -p 'dmenu%'"
 
@@ -161,21 +160,21 @@ mode "resize" {
 # Pressing right will grow the window’s width.
 # Pressing up will shrink the window’s height.
 # Pressing down will grow the window’s height.
-	bindsym j resize shrink width 10 px or 10 ppt
-		bindsym k resize grow height 10 px or 10 ppt
-		bindsym l resize shrink height 10 px or 10 ppt
-		bindsym semicolon resize grow width 10 px or 10 ppt
+  bindsym j resize shrink width 10 px or 10 ppt
+    bindsym k resize grow height 10 px or 10 ppt
+    bindsym l resize shrink height 10 px or 10 ppt
+    bindsym semicolon resize grow width 10 px or 10 ppt
 
 # same bindings, but for the arrow keys
-		bindsym Left resize shrink width 10 px or 10 ppt
-		bindsym Down resize grow height 10 px or 10 ppt
-		bindsym Up resize shrink height 10 px or 10 ppt
-		bindsym Right resize grow width 10 px or 10 ppt
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
 
 # back to normal: Enter or Escape or $mod+r
-		bindsym Return mode "default"
-		bindsym Escape mode "default"
-		bindsym $mod+r mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
 }
 
 # class                 border  bground text    indicator child_border
@@ -188,17 +187,17 @@ client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
 client.background       #F8F8F2
 
 # Start i3bar to display a workspace bar (plus the system information i3status
-		bar {
-		status_command i3status  # Or your chosen status tool
-		colors {
-		background #282A36
-		statusline #F8F8F2
-		separator  #44475A
+    bar {
+    status_command i3status  # Or your chosen status tool
+    colors {
+    background #282A36
+    statusline #F8F8F2
+    separator  #44475A
 
-		focused_workspace  #44475A #44475A #F8F8F2
-		active_workspace   #282A36 #44475A #F8F8F2
-		inactive_workspace #282A36 #282A36 #BFBFBF
-		urgent_workspace   #FF5555 #FF5555 #F8F8F2
-		binding_mode       #FF5555 #FF5555 #F8F8F2
-		}
-		}
+    focused_workspace  #44475A #44475A #F8F8F2
+    active_workspace   #282A36 #44475A #F8F8F2
+    inactive_workspace #282A36 #282A36 #BFBFBF
+    urgent_workspace   #FF5555 #FF5555 #F8F8F2
+    binding_mode       #FF5555 #FF5555 #F8F8F2
+    }
+    }
