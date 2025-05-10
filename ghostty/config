@@ -9,6 +9,13 @@ theme = carbonfox
 mouse-hide-while-typing = true
 copy-on-select = true
 
+cursor-color = #39ff14
+cursor-style = block
+cursor-style-blink = false
+
+clipboard-write = allow
+clipboard-trim-trailing-spaces = true
+
 # Background and transparency settings
 background = #000000
 background-opacity = 0.85
@@ -17,3 +24,5 @@ background-opacity = 0.85
 font-family = MesloLGS Nerd Font
 font-size = 18
 cursor-style = block
+
+shell-integration-features = no-cursor
