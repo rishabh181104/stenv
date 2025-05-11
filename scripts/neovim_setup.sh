@@ -5,7 +5,7 @@ echo "Starting Neovim dependency installation for openSUSE Tumbleweed..."
 
 # Function to check if a command exists
 command_exists() {
-    command -v "$1" >/dev/null 2>&1
+  command -v "$1" >/dev/null 2>&1
 }
 
 # Update system packages
@@ -22,7 +22,7 @@ echo "Installing Vim-Plug..."
 VIM_PLUG_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/nvim/site/autoload"
 mkdir -p "$VIM_PLUG_DIR"
 curl -fLo "$VIM_PLUG_DIR/plug.vim" --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # Install fzf (for fzf-lua)
 echo "Installing fzf..."
@@ -35,21 +35,27 @@ sudo zypper install -y nodejs npm
 # Install LSP servers
 echo "Installing LSP servers..."
 if command_exists npm; then
-    sudo npm install -g typescript-language-server vscode-langservers-extracted # JS/TS, HTML, CSS
-    sudo npm install -g pyright # Python
-    sudo npm install -g sql-language-server # SQL
-    sudo npm install -g prettier
+  sudo npm install -g typescript-language-server vscode-langservers-extracted # JS/TS, HTML, CSS
+  sudo npm install -g pyright # Python
+  sudo npm install -g sql-language-server # SQL
+  sudo npm install -g prettier
 else
-    echo "Error: npm not found. Skipping LSP server installation."
-    exit 1
+  echo "Error: npm not found. Skipping LSP server installation."
+  exit 1
 fi
 
 # Install Rust and rust-analyzer
 echo "Installing Rust and rust-analyzer..."
 if ! command_exists rustup; then
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-    source "$HOME/.cargo/env"
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+  source "$HOME/.cargo/env"
 fi
+
+# Installing rust, rust-analyzer, rustfmt
+echo "Installing rust, rust-analyzer and rustfmt"
+rustup component add rustc
+rustup component add rust-analyzer
+rustup component add rustfmt
 
 # Install clangd (for C++)
 echo "Installing clangd..."
