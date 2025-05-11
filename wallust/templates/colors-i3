@@ -187,27 +187,30 @@ mode "resize" {
     bindsym $mod+r mode "default"
 }
 
-# Window colors
-client.focused          #0F111A #0F111A #E6E6E6 #0F111A #0F111A
-client.focused_inactive #1A1C29 #1A1C29 #B0B0B0 #1A1C29 #1A1C29
-client.unfocused        #12151F #12151F #A0A0A0 #12151F #12151F
-client.urgent           #E06C75 #2A2D37 #F0F0F0 #E06C75 #E06C75
-client.placeholder      #0F111A #0F111A #E6E6E6 #0F111A #0F111A
+# wallust i3 template - True Dark
 
-client.background       #0F111A
+# Use darkest color for backgrounds, lightest for text
 
-# i3bar colors
+client.focused          {color0}   {color0}   {color15} {color4}   {color0}
+client.focused_inactive {color0}   {color0}   {color8}  {color0}   {color0}
+client.unfocused        {color0}   {color0}   {color8}  {color0}   {color0}
+client.urgent           {color1}   {color1}   {color15} {color1}   {color1}
+client.placeholder      {color0}   {color0}   {color15} {color0}   {color0}
+
+client.background       {color0}
+
 bar {
   status_command i3status
     colors {
-      background #0F111A
-        statusline #E6E6E6
-        separator  #2A2D37
+      background {color0}
+      statusline {color15}
+      separator  {color8}
 
-        focused_workspace  #61AFEF #0F111A #E6E6E6
-        active_workspace   #56B6C2 #0F111A #E6E6E6
-        inactive_workspace #1A1C29 #0F111A #B0B0B0
-        urgent_workspace   #E06C75 #0F111A #F0F0F0
-        binding_mode       #D19A66 #0F111A #F0F0F0
+      focused_workspace  {color4} {color0} {color15}
+      active_workspace   {color8} {color0} {color15}
+      inactive_workspace {color8} {color0} {color8}
+      urgent_workspace   {color1} {color0} {color15}
+      binding_mode       {color1} {color0} {color15}
     }
 }
+

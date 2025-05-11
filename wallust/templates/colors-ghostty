@@ -1,3 +1,36 @@
+# Window settings
+window-decoration = false
+window-inherit-working-directory = true
+window-theme = dark
+
+theme = carbonfox
+
+# Mouse settings
+mouse-hide-while-typing = true
+copy-on-select = true
+
+cursor-color = #39ff14
+cursor-style = block
+cursor-style-blink = false
+cursor-opacity = 0.64
+
+clipboard-write = allow
+clipboard-trim-trailing-spaces = true
+clipboard-paste-protection = false
+clipboard-paste-bracketed-safe = false
+
+# Background and transparency settings
+background = #000000
+background-opacity = 0.85
+background-blur = true
+
+# Font and cursor settings
+font-family = MesloLGS Nerd Font
+font-size = 18
+cursor-style = block
+
+shell-integration-features = no-cursor
+
 palette = 0={{color0}}
 palette = 1={{color1}}
 palette = 2={{color2}}
@@ -14,9 +47,9 @@ palette = 12={{color12}}
 palette = 13={{color13}}
 palette = 14={{color14}}
 palette = 15={{color15}}
-palette = 16={{color16}}
 background = {{background}}
 foreground = {{foreground}}
 selection-background = #2a2a2a
 selection-foreground = #f2f4f8
 cursor-color = {{cursor}}
+

@@ -3,48 +3,48 @@
 /* wallust template - colors-rofi */
 
 * {
-	active-background: #3397AB;
-	active-foreground: #FBE8DA;
-	normal-background: #15171C;
-	normal-foreground: #FBE8DA;
-	urgent-background: #B4BEBB;
-	urgent-foreground: #FBE8DA;
+	active-background: #BC3C43;
+	active-foreground: #FADACC;
+	normal-background: #151519;
+	normal-foreground: #FADACC;
+	urgent-background: #518CBC;
+	urgent-foreground: #FADACC;
 
-	alternate-active-background: #8E6E7B;
-	alternate-active-foreground: #FBE8DA;
-	alternate-normal-background: #15171C;
-	alternate-normal-foreground: #FBE8DA;
-	alternate-urgent-background: #15171C;
-	alternate-urgent-foreground: #FBE8DA;
+	alternate-active-background: #305B8A;
+	alternate-active-foreground: #FADACC;
+	alternate-normal-background: #151519;
+	alternate-normal-foreground: #FADACC;
+	alternate-urgent-background: #151519;
+	alternate-urgent-foreground: #FADACC;
 
-	selected-active-background: #B4BEBB;
-	selected-active-foreground: #FBE8DA;
-	selected-normal-background: #B4BEBB;
-	selected-normal-foreground: #FBE8DA;
-	selected-urgent-background: #3397AB;
-	selected-urgent-foreground: #FBE8DA;
+	selected-active-background: #518CBC;
+	selected-active-foreground: #FADACC;
+	selected-normal-background: #518CBC;
+	selected-normal-foreground: #FADACC;
+	selected-urgent-background: #BC3C43;
+	selected-urgent-foreground: #FADACC;
 
-	background-color: #15171C;
+	background-color: #151519;
 	background: rgba(0,0,0,0.7);
-	foreground: #FBE8DA;
-	border-color: #3397AB;
+	foreground: #FADACC;
+	border-color: #BC3C43;
 
-	color0: #3C3E44;
-	color1: #031125;
-	color2: #154A60;
-	color3: #6A535C;
-	color4: #267180;
-	color5: #878F8C;
-	color6: #B88E6F;
-	color7: #F2D6C1;
-	color8: #A99587;
-	color9: #041731;
-	color10: #1C6380;
-	color11: #8E6E7B;
-	color12: #3397AB;
-	color13: #B4BEBB;
-	color14: #F5BD94;
-	color15: #F2D6C1;
+	color0: #3C3C41;
+	color1: #0A101E;
+	color2: #501D27;
+	color3: #244467;
+	color4: #8D2D32;
+	color5: #3D698D;
+	color6: #B57052;
+	color7: #F0C2AE;
+	color8: #A8877A;
+	color9: #0D1528;
+	color10: #6A2634;
+	color11: #305B8A;
+	color12: #BC3C43;
+	color13: #518CBC;
+	color14: #F2956E;
+	color15: #F0C2AE;
 
 
 }
