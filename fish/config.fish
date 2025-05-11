@@ -43,6 +43,8 @@ alias remove-unwanted='sudo zypper rm $(zypper packages --unneeded)'
 alias remove-cache='sudo zypper clean --all'
 alias zlock='sudo zypper addlock'
 
+alias getgit='~/stenv/scripts/get_token.sh'
+
 alias c='clear'
 alias n='nvim'
 alias sn='sudo nvim'
