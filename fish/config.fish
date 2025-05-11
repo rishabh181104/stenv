@@ -116,7 +116,7 @@ alias topcpu="/bin/ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10"
 alias f="find . | grep "
 alias checkcommand="type -t"
 alias openports='netstat -nape --inet'
-alias reboot='sudo systemctl restart'
+alias reboot='systemctl reboot'
 alias logout='loginctl kill-session $XDG_SESSION_ID'
 alias shutdown='sudo shutdown now'
 alias diskspace="du -S | sort -n -r |more"
@@ -175,15 +175,15 @@ test -r '~/.opam/opam-init/init.fish' && source '~/.opam/opam-init/init.fish' > 
 
 
 # THIS IS FOR THE AUTOMATIC STARTUP OF THE SESSIONS YOU WANT WITH XORG
-if test -z "$DISPLAY"; and test (tty) = "/dev/tty1"
-  exec startx
-end
+# if test -z "$DISPLAY"; and test (tty) = "/dev/tty1"
+#   exec startx
+# end
 
 
 # THIS IS FOR THE AUTOMATIC STARTUP OF THE SESSIONS YOU WANT WITH WAYLAND
-# if test -z "$WAYLAND_DISPLAY"; and test (tty) = "/dev/tty1"
-#   exec dbus-run-session hyprland
-# end
+if test -z "$WAYLAND_DISPLAY"; and test (tty) = "/dev/tty1"
+  exec dbus-run-session hyprland
+end
 
 
 # if test -z "$WAYLAND_DISPLAY"; and test (tty) = "/dev/tty1"

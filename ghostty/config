@@ -31,25 +31,25 @@ cursor-style = block
 
 shell-integration-features = no-cursor
 
-palette = 0=#3C3C41
-palette = 1=#0A101E
-palette = 2=#501D27
-palette = 3=#244467
-palette = 4=#8D2D32
-palette = 5=#3D698D
-palette = 6=#B57052
-palette = 7=#F0C2AE
-palette = 8=#A8877A
-palette = 9=#0D1528
-palette = 10=#6A2634
-palette = 11=#305B8A
-palette = 12=#BC3C43
-palette = 13=#518CBC
-palette = 14=#F2956E
-palette = 15=#F0C2AE
-background = #151519
-foreground = #FADACC
+palette = 0=#3C3E44
+palette = 1=#031125
+palette = 2=#154A60
+palette = 3=#6A535C
+palette = 4=#267180
+palette = 5=#878F8C
+palette = 6=#B88E6F
+palette = 7=#F2D6C1
+palette = 8=#A99587
+palette = 9=#041731
+palette = 10=#1C6380
+palette = 11=#8E6E7B
+palette = 12=#3397AB
+palette = 13=#B4BEBB
+palette = 14=#F5BD94
+palette = 15=#F2D6C1
+background = #15171C
+foreground = #FBE8DA
 selection-background = #2a2a2a
 selection-foreground = #f2f4f8
-cursor-color = #B28080
+cursor-color = #8CA5AD
 
