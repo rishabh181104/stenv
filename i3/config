@@ -65,7 +65,6 @@ bindsym $mod+c exec $communication
 bindsym $mod+o exec $creativity
 bindsym $mod+g exec github-desktop
 bindsym $mod+t exec $ide
-bindsym $mod+Shift+g exec ~/stenv/scripts/./get_token.sh
 bindsym $mod+w exec feh --randomize --bg-fill ~/Wallpapers/Pictures/*
 
 # change focus
