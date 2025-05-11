@@ -14,7 +14,7 @@ exec --no-startup-id xset s off
 exec --no-startup-id xset s noblank
 exec --no-startup-id xset -dpms
 
-exec --no-startup-id "feh --randomize --bg-fill ~/Wallpapers/Pictures/*"
+exec --no-startup-id "~/stenv/scripts/random_wallpaper-i3.sh"
 
 set $refresh_i3status killall -SIGUSR1 i3status
 
@@ -65,7 +65,7 @@ bindsym $mod+c exec $communication
 bindsym $mod+o exec $creativity
 bindsym $mod+g exec github-desktop
 bindsym $mod+t exec $ide
-bindsym $mod+w exec feh --randomize --bg-fill ~/Wallpapers/Pictures/*
+bindsym $mod+w exec ~/stenv/scripts/random_wallpaper-i3.sh
 
 # change focus
 bindsym Mod1+h focus left
