@@ -32,25 +32,25 @@ font-size = 18
 
 shell-integration-features = no-cursor
 
-palette = 0=#454745
-palette = 1=#1B2016
-palette = 2=#3D421F
-palette = 3=#474A2D
-palette = 4=#4A4F23
-palette = 5=#6C6F41
-palette = 6=#797B47
-palette = 7=#C8C9A6
-palette = 8=#8C8D74
-palette = 9=#232A1D
-palette = 10=#51582A
-palette = 11=#5E633C
-palette = 12=#636A2F
-palette = 13=#909356
-palette = 14=#A1A45F
-palette = 15=#C8C9A6
+palette = 0=#404248
+palette = 1=#0F1C31
+palette = 2=#1E4267
+palette = 3=#1E4267
+palette = 4=#4A485D
+palette = 5=#7B6D82
+palette = 6=#A38B9F
+palette = 7=#E3D3E1
+palette = 8=#9F949D
+palette = 9=#142541
+palette = 10=#285889
+palette = 11=#285889
+palette = 12=#63607C
+palette = 13=#A491AD
+palette = 14=#D9B9D4
+palette = 15=#E3D3E1
 
 # Core colors
-foreground = #DEDFC7
+foreground = #F2E6F0
 selection-background = #3b4252
 selection-foreground = #eceff4
-cursor-color = #989B78
+cursor-color = #8D9FBC
