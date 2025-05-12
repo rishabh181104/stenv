@@ -1,6 +1,14 @@
 if status is-interactive
-  fastfetch
+  # Run ASCII art generation script and then fastfetch
+  if test -f ~/stenv/scripts/generate_ascii.sh
+    bash ~/stenv/scripts/generate_ascii.sh && fastfetch
+  else
+    echo "Warning: generate_ascii.sh not found, running fastfetch without custom ASCII art"
+    fastfetch
+  end
 end
+
+# Initialize starship prompt
 starship init fish | source
 
 # Set environment variables
