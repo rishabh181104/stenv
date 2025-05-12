@@ -204,6 +204,7 @@ PACKAGES=(
   xorgproto-devel
   xclip
   lxappearance
+  openSUSE-repos-Tumbleweed-NVIDIA
 )
 
 # Function to install packages

@@ -9,47 +9,49 @@ theme = carbonfox
 mouse-hide-while-typing = true
 copy-on-select = true
 
-cursor-color = #39ff14
+# Cursor settings
+cursor-color = #88c0d0
 cursor-style = block
 cursor-style-blink = false
 cursor-opacity = 0.64
 
+# Clipboard settings
 clipboard-write = allow
 clipboard-trim-trailing-spaces = true
 clipboard-paste-protection = false
 clipboard-paste-bracketed-safe = false
 
 # Background and transparency settings
-background = #000000
+background = #1c2526
 background-opacity = 0.85
 background-blur = true
 
-# Font and cursor settings
+# Font settings
 font-family = MesloLGS Nerd Font
 font-size = 18
-cursor-style = block
 
 shell-integration-features = no-cursor
 
-palette = 0=#3C3E44
-palette = 1=#031125
-palette = 2=#154A60
-palette = 3=#6A535C
-palette = 4=#267180
-palette = 5=#878F8C
-palette = 6=#B88E6F
-palette = 7=#F2D6C1
-palette = 8=#A99587
-palette = 9=#041731
-palette = 10=#1C6380
-palette = 11=#8E6E7B
-palette = 12=#3397AB
-palette = 13=#B4BEBB
-palette = 14=#F5BD94
-palette = 15=#F2D6C1
-background = #15171C
-foreground = #FBE8DA
-selection-background = #2a2a2a
-selection-foreground = #f2f4f8
-cursor-color = #8CA5AD
+palette = 0=#3D3E3E
+palette = 1=#29231A
+palette = 2=#5D442D
+palette = 3=#62472E
+palette = 4=#664B30
+palette = 5=#90703D
+palette = 6=#A58344
+palette = 7=#E5CEA4
+palette = 8=#A09073
+palette = 9=#372E23
+palette = 10=#7C5B3C
+palette = 11=#835F3E
+palette = 12=#896440
+palette = 13=#C09551
+palette = 14=#DCAE5A
+palette = 15=#E5CEA4
 
+# Core colors
+background = #171717
+foreground = #F3E3C5
+selection-background = #3b4252
+selection-foreground = #eceff4
+cursor-color = #B79F80

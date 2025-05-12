@@ -9,25 +9,26 @@ theme = carbonfox
 mouse-hide-while-typing = true
 copy-on-select = true
 
-cursor-color = #39ff14
+# Cursor settings
+cursor-color = #88c0d0
 cursor-style = block
 cursor-style-blink = false
 cursor-opacity = 0.64
 
+# Clipboard settings
 clipboard-write = allow
 clipboard-trim-trailing-spaces = true
 clipboard-paste-protection = false
 clipboard-paste-bracketed-safe = false
 
 # Background and transparency settings
-background = #000000
+background = #1c2526
 background-opacity = 0.85
 background-blur = true
 
-# Font and cursor settings
+# Font settings
 font-family = MesloLGS Nerd Font
 font-size = 18
-cursor-style = block
 
 shell-integration-features = no-cursor
 
@@ -47,9 +48,10 @@ palette = 12={{color12}}
 palette = 13={{color13}}
 palette = 14={{color14}}
 palette = 15={{color15}}
+
+# Core colors
 background = {{background}}
 foreground = {{foreground}}
-selection-background = #2a2a2a
-selection-foreground = #f2f4f8
+selection-background = #3b4252
+selection-foreground = #eceff4
 cursor-color = {{cursor}}
-
