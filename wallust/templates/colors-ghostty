@@ -50,7 +50,6 @@ palette = 14={{color14}}
 palette = 15={{color15}}
 
 # Core colors
-background = {{background}}
 foreground = {{foreground}}
 selection-background = #3b4252
 selection-foreground = #eceff4
