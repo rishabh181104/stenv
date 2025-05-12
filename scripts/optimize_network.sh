@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# Script to optimize network settings for active Wi-Fi and Ethernet connections
-# Applies power saving disable (Wi-Fi), public DNS, and firewall ICMP settings
-# Compatible with openSUSE Tumbleweed and Hyprland
-
 # Exit on any error
 set -e
 
@@ -85,8 +81,8 @@ if [ -n "$wifi_conn" ]; then
     fi
 
     # Set public DNS servers
-    nmcli connection modify "$wifi_conn" ipv4.dns "8.8.8.8,1.1.1.1" || log_error "Failed to set IPv4 DNS for $wifi_conn"
-    nmcli connection modify "$wifi_conn" ipv6.dns "2001:4860:4860::8888,2606:4700:4700::1111" || log_error "Failed to set IPv6 DNS for $wifi_conn"
+    nmcli connection modify "$wifi_conn" ipv4.dns "1.1.1.1,8.8.8.8" || log_error "Failed to set IPv4 DNS for $wifi_conn"
+    nmcli connection modify "$wifi_conn" ipv6.dns "2606:4700:4700::1111,2001:4860:4860::8888" || log_error "Failed to set IPv6 DNS for $wifi_conn"
     log_message "Set public DNS servers for $wifi_conn"
   else
     log_message "No active Wi-Fi connection found."
