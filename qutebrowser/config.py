@@ -190,6 +190,7 @@ c.aliases = {
     'mail': 'open https://mail.google.com/',
     'keep': 'open https://keep.google.com/',
     'iitm': 'open https://ds.study.iitm.ac.in/',
+    'type': 'open https://monkeytype.com/',
     'chess': 'open https://www.chess.com/',
 }
 
