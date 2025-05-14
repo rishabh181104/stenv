@@ -168,7 +168,7 @@ config.bind('<Alt-y>', 'yank')
 # Reload page with Alt+r
 config.bind('<Alt-r>', 'reload')
 
-config.bind('<Alt-j>', 'mode-leave', mode='insert')
+config.bind('<Alt-k>', 'mode-leave', mode='insert')
 
 
 # fonts
