@@ -21,12 +21,6 @@ ytd-guide-renderer {
   display: none !important;
 }
 
-/* hide yt top bar */
-.ytd-masthead {
-  margin: 0 !important;
-  display: none !important;
-}
-
 /* remove extra padding and ensure content is full-width on channel page*/
 .ytd-app {
   margin-top: 0 !important;

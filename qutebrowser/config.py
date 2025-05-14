@@ -192,6 +192,7 @@ c.aliases = {
     'iitm': 'open https://ds.study.iitm.ac.in/',
     'type': 'open https://monkeytype.com/',
     'chess': 'open https://www.chess.com/',
+    'grok': 'open https://grok.com/',
 }
 
 c.content.blocking.enabled = True
