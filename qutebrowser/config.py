@@ -173,7 +173,7 @@ config.bind('jk', 'mode-leave', mode='insert')
 
 # fonts
 c.fonts.default_family = []
-c.fonts.default_size = '12pt'
+c.fonts.default_size = '10pt'
 c.fonts.web.family.fixed = 'Meslo Nerd Font'
 c.fonts.web.family.sans_serif = 'Meslo Nerd Font'
 c.fonts.web.family.serif = 'Meslo Nerd Font'
@@ -214,6 +214,13 @@ c.content.blocking.adblock.lists = [
     "https://github.com/uBlockOrigin/uAssets/raw/master/filters/quick-fixes.txt",
     "https://github.com/uBlockOrigin/uAssets/raw/master/filters/resource-abuse.txt",
     "https://github.com/uBlockOrigin/uAssets/raw/master/filters/unbreak.txt"]
+
+# styles, cosmetics
+c.content.user_stylesheets = ["~/.config/qutebrowser/styles/youtube-tweaks.css"]
+# c.tabs.padding = {'top': 5, 'bottom': 5, 'left': 9, 'right': 9}
+c.tabs.indicator.width = 0 # no tab indicators
+c.window.transparent = True # apparently not needed
+c.tabs.width = '7%'
 
 # === Downloads ===
 # Directory for downloads (use absolute path or relative to qutebrowser config dir)
