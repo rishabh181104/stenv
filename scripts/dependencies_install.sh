@@ -205,6 +205,8 @@ PACKAGES=(
   xclip
   lxappearance
   openSUSE-repos-Tumbleweed-NVIDIA
+  dejavu-fonts
+  python313-adblock
 )
 
 # Function to install packages
