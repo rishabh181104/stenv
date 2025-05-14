@@ -155,12 +155,13 @@ config.bind('<Alt-Shift-t>', 'undo')
 
 # Switch to the next tab with Alt+Tab
 config.bind('<Alt-Tab>', 'tab-next')
+config.bind('<Alt-t>', 'open -t', mode='normal')
 
 # Switch to the previous tab with Alt+Shift-Tab
 config.bind('<Alt-Shift-Tab>', 'tab-prev')
 
 # Open URL prompt with Alt+o
-config.bind('<Alt-o>', 'set-cmd-text -s :open')
+config.bind('<Alt-o>', 'cmd-set-text -s :open')
 
 # Yank current URL with Alt+y
 config.bind('<Alt-y>', 'yank')
@@ -168,7 +169,7 @@ config.bind('<Alt-y>', 'yank')
 # Reload page with Alt+r
 config.bind('<Alt-r>', 'reload')
 
-config.bind('<Alt-k>', 'mode-leave', mode='insert')
+config.bind('jk', 'mode-leave', mode='insert')
 
 
 # fonts
