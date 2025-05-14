@@ -4,7 +4,66 @@ config = config
 
 # Load settings configured via the GUI (autoconfig.yml)
 # Set to False if you want to ignore GUI settings and use only this file
+import subprocess
+def read_xresources(prefix):
+    props = {}
+    x = subprocess.run(['xrdb', '-query'], capture_output=True, check=True, text=True)
+    lines = x.stdout.split('\n')
+    for line in filter(lambda l : l.startswith(prefix), lines):
+        prop, _, value = line.partition(':\t')
+        props[prop] = value
+    return props
+
 config.load_autoconfig(True)
+
+# === Theme Settings ===
+# Carbonfox-inspired dark theme
+c.colors.webpage.bg = '#1a1a1a'
+c.colors.webpage.darkmode.enabled = True
+c.colors.webpage.preferred_color_scheme = 'dark'
+c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
+c.colors.webpage.darkmode.policy.images = 'never'
+config.set('colors.webpage.darkmode.enabled', False, 'file://*')
+
+# Tab colors
+c.colors.tabs.bar.bg = '#1a1a1a'
+c.colors.tabs.even.bg = '#1a1a1a'
+c.colors.tabs.odd.bg = '#1a1a1a'
+c.colors.tabs.selected.even.bg = '#2a2a2a'
+c.colors.tabs.selected.odd.bg = '#2a2a2a'
+c.colors.tabs.pinned.even.bg = '#1a1a1a'
+c.colors.tabs.pinned.odd.bg = '#1a1a1a'
+c.colors.tabs.pinned.selected.even.bg = '#2a2a2a'
+c.colors.tabs.pinned.selected.odd.bg = '#2a2a2a'
+
+# Text colors
+c.colors.tabs.even.fg = '#808080'
+c.colors.tabs.odd.fg = '#808080'
+c.colors.tabs.selected.even.fg = '#ffffff'
+c.colors.tabs.selected.odd.fg = '#ffffff'
+
+# Status bar colors
+c.colors.statusbar.normal.bg = '#1a1a1a'
+c.colors.statusbar.normal.fg = '#808080'
+c.colors.statusbar.insert.bg = '#1a1a1a'
+c.colors.statusbar.insert.fg = '#ffffff'
+c.colors.statusbar.command.bg = '#1a1a1a'
+c.colors.statusbar.command.fg = '#ffffff'
+c.colors.statusbar.url.success.http.fg = '#808080'
+c.colors.statusbar.url.success.https.fg = '#808080'
+c.colors.statusbar.url.hover.fg = '#ffffff'
+
+# Completion colors
+c.colors.completion.category.bg = '#1a1a1a'
+c.colors.completion.category.fg = '#808080'
+c.colors.completion.category.border.bottom = '#1a1a1a'
+c.colors.completion.category.border.top = '#1a1a1a'
+c.colors.completion.even.bg = '#1a1a1a'
+c.colors.completion.odd.bg = '#1a1a1a'
+c.colors.completion.item.selected.bg = '#2a2a2a'
+c.colors.completion.item.selected.fg = '#ffffff'
+c.colors.completion.item.selected.border.bottom = '#2a2a2a'
+c.colors.completion.item.selected.border.top = '#2a2a2a'
 
 # === General Settings ===
 # Set the default page shown when qutebrowser starts
@@ -112,8 +171,14 @@ config.bind('<Alt-r>', 'reload')
 config.bind('jk', 'mode-leave', mode='insert')
 
 
-# Unbind 'Ctrl-V' to prevent accidental pasting (optional)
-# config.unbind('Ctrl-V')
+# fonts
+c.fonts.default_family = []
+c.fonts.default_size = '12pt'
+c.fonts.web.family.fixed = 'Meslo Nerd Font'
+c.fonts.web.family.sans_serif = 'Meslo Nerd Font'
+c.fonts.web.family.serif = 'Meslo Nerd Font'
+c.fonts.web.family.standard = 'Meslo Nerd Font'
+
 
 # === Aliases ===
 # Create shortcuts for commands (e.g., type ':q' to quit)
@@ -122,8 +187,33 @@ c.aliases = {
     'w': 'session-save',
     'today': 'open https://www.linuxtoday.com/',
     'youtube': 'open https://www.youtube.com/',
-    'chess': 'https://www.chess.com/',
+    'mail': 'open https://mail.google.com/',
+    'keep': 'open https://keep.google.com/',
+    'iitm': 'open https://ds.study.iitm.ac.in/',
+    'chess': 'open https://www.chess.com/',
 }
+
+c.content.blocking.enabled = True
+c.content.blocking.method = 'adblock' # uncomment this if you install python-adblock
+c.content.blocking.adblock.lists = [
+    "https://github.com/ewpratten/youtube_ad_blocklist/blob/master/blocklist.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/legacy.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2020.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2021.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2022.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2023.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2024.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badware.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/privacy.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badlists.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances-cookies.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances-others.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badlists.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/quick-fixes.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/resource-abuse.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/unbreak.txt"]
 
 # === Downloads ===
 # Directory for downloads (use absolute path or relative to qutebrowser config dir)
@@ -161,12 +251,3 @@ def filter_yt(info: interceptor.Request):
     if (url.host() == 'www.youtube.com' and url.path() == '/get_video_info' and '&adformat=' in url.query()):
         info.block()
 interceptor.register(filter_yt)
-
-# === User Stylesheets ===
-# Apply custom CSS to specific websites or all pages
-# Place CSS files in ~/.config/qutebrowser/css/ and reference them here
-# c.content.user_stylesheets = ['css/custom.css']
-
-# === Greasemonkey Scripts ===
-# Load JavaScript userscripts from ~/.local/share/qutebrowser/greasemonkey/
-# Example: c.content.greasemonkey_scripts = ['script.js']
