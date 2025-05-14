@@ -15,19 +15,6 @@ ytd-item-section-renderer:not(:has(ytd-grid-renderer)):has(ytd-thumbnail-overlay
   max-width: none !important;
 }
 
-/* hide yt sidebar */
-ytd-mini-guide-renderer, 
-ytd-guide-renderer {
-  display: none !important;
-}
-
-/* remove extra padding and ensure content is full-width on channel page*/
-.ytd-app {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-  margin-left: 0 !important;
-}
-
 html:not(.ytd-watch-flexy) ytd-watch-flexy[flexy] #player {
   width: 100% !important;
   max-width: 1400px;
