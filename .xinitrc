@@ -1,2 +1,1 @@
-xrandr --output eDP-1 --mode "1920x1080"
-exec dwm
+exec i3

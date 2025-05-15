@@ -9,12 +9,13 @@ exec --no-startup-id flameshot
 exec --no-startup-id nm-applet
 exec --no-startup-id picom
 exec --no-startup-id blueman-applet
+exec --no-startup-id xrdb -merge ~/.cache/wal/colors.Xresources
 exec --no-startup-id xinput set-prop "Elan Touchpad" "libinput Tapping Enabled" 1
 exec --no-startup-id xset s off
 exec --no-startup-id xset s noblank
 exec --no-startup-id xset -dpms
 
-exec --no-startup-id "~/stenv/scripts/random_wallpaper-i3.sh"
+exec --no-startup-id "~/stenv/scripts/random_wallpaper.sh"
 
 set $refresh_i3status killall -SIGUSR1 i3status
 
@@ -186,27 +187,55 @@ mode "resize" {
     bindsym $mod+r mode "default"
 }
 
+# Include pywal colors
+set_from_resource $fg foreground foreground
+set_from_resource $bg background background
+set_from_resource $color0 color0 color0
+set_from_resource $color1 color1 color1
+# ... add more colors as needed (color2, color3, etc.)
+
 # Window colors
-client.focused          #0F111A #0F111A #E6E6E6 #0F111A #0F111A
-client.focused_inactive #1A1C29 #1A1C29 #B0B0B0 #1A1C29 #1A1C29
-client.unfocused        #12151F #12151F #A0A0A0 #12151F #12151F
-client.urgent           #E06C75 #2A2D37 #F0F0F0 #E06C75 #E06C75
-client.placeholder      #0F111A #0F111A #E6E6E6 #0F111A #0F111A
+# class                 border    backgr.   text      indicator child_border
+client.focused          $color1   $color1   $fg       $color2   $color1
+client.focused_inactive $color0   $color0   $fg       $color2   $color0
+client.unfocused        $color0   $color0   $fg       $color2   $color0
+client.urgent           $color3   $color3   $fg       $color2   $color3
 
-client.background       #0F111A
-
-# i3bar colors
+# Bar colors
 bar {
   status_command i3status
     colors {
-      background #0F111A
-        statusline #E6E6E6
-        separator  #2A2D37
-
-        focused_workspace  #61AFEF #0F111A #E6E6E6
-        active_workspace   #56B6C2 #0F111A #E6E6E6
-        inactive_workspace #1A1C29 #0F111A #B0B0B0
-        urgent_workspace   #E06C75 #0F111A #F0F0F0
-        binding_mode       #D19A66 #0F111A #F0F0F0
+      background $bg
+        statusline $fg
+        separator  $color2
+        focused_workspace  $color1 $color1 $fg
+        active_workspace   $color0 $color0 $fg
+        inactive_workspace $bg     $bg     $fg
+        urgent_workspace   $color3 $color3 $fg
     }
 }
+
+# # Window colors
+# client.focused          #0F111A #0F111A #E6E6E6 #0F111A #0F111A
+# client.focused_inactive #1A1C29 #1A1C29 #B0B0B0 #1A1C29 #1A1C29
+# client.unfocused        #12151F #12151F #A0A0A0 #12151F #12151F
+# client.urgent           #E06C75 #2A2D37 #F0F0F0 #E06C75 #E06C75
+# client.placeholder      #0F111A #0F111A #E6E6E6 #0F111A #0F111A
+#
+# client.background       #0F111A
+#
+# # i3bar colors
+# bar {
+#   status_command i3status
+#     colors {
+#       background #0F111A
+#         statusline #E6E6E6
+#         separator  #2A2D37
+#
+#         focused_workspace  #61AFEF #0F111A #E6E6E6
+#         active_workspace   #56B6C2 #0F111A #E6E6E6
+#         inactive_workspace #1A1C29 #0F111A #B0B0B0
+#         urgent_workspace   #E06C75 #0F111A #F0F0F0
+#         binding_mode       #D19A66 #0F111A #F0F0F0
+#     }
+# }

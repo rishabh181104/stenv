@@ -207,6 +207,7 @@ PACKAGES=(
   openSUSE-repos-Tumbleweed-NVIDIA
   dejavu-fonts
   python313-adblock
+  bat
 )
 
 # Function to install packages

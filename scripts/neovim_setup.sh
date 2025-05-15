@@ -56,6 +56,7 @@ echo "Installing rust, rust-analyzer and rustfmt"
 rustup component add rustc
 rustup component add rust-analyzer
 rustup component add rustfmt
+cargo install exo
 
 # Install clangd (for C++)
 echo "Installing clangd..."

@@ -30,9 +30,6 @@ set -gx PATH /usr/bin $PATH
 set -gx PATH $HOME/.cargo/env.fish $PATH
 
 # Aliases
-alias ls='ls --color=auto'
-alias ll='ls -lah'
-alias la='ls -a'
 alias l='ls -CF'
 alias vim='nvim'
 alias clr='clear'
