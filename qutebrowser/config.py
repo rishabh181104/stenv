@@ -200,6 +200,7 @@ c.aliases = {
     'grok': 'open https://grok.com/',
     'github': 'open https://github.com/',
     'insta': 'open https://www.instagram.com/',
+    'anime': 'open https://animekai.to/home/',
 }
 
 c.content.blocking.enabled = True
