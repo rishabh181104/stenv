@@ -201,3 +201,6 @@ end
 # end
 # Activate pywal16 environment
 # source ~/pywal16-env/bin/activate.fish
+
+# Generated for envman. Do not edit.
+test -s ~/.config/envman/load.fish; and source ~/.config/envman/load.fish

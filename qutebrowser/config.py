@@ -53,6 +53,10 @@ c.colors.statusbar.url.success.http.fg = '#808080'
 c.colors.statusbar.url.success.https.fg = '#808080'
 c.colors.statusbar.url.hover.fg = '#ffffff'
 
+# Scrolling
+c.scrolling.smooth = True
+c.qt.args = ['enable-gpu']
+
 # Completion colors
 c.colors.completion.category.bg = '#1a1a1a'
 c.colors.completion.category.fg = '#808080'
@@ -169,7 +173,7 @@ config.bind('<Alt-y>', 'yank')
 # Reload page with Alt+r
 config.bind('<Alt-r>', 'reload')
 
-config.bind('jk', 'mode-leave', mode='insert')
+config.bind(';j', 'mode-leave', mode='insert')
 
 
 # fonts
@@ -195,6 +199,7 @@ c.aliases = {
     'chess': 'open https://www.chess.com/',
     'grok': 'open https://grok.com/',
     'github': 'open https://github.com/',
+    'insta': 'open https://www.instagram.com/',
 }
 
 c.content.blocking.enabled = True
