@@ -187,7 +187,7 @@ c.aliases = {
     'q': 'quit',
     'w': 'session-save',
     'today': 'open https://www.linuxtoday.com/',
-    'youtube': 'open https://www.youtube.com/',
+    'yt': 'open https://www.youtube.com/',
     'mail': 'open https://mail.google.com/',
     'keep': 'open https://keep.google.com/',
     'iitm': 'open https://ds.study.iitm.ac.in/',
