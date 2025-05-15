@@ -13,6 +13,9 @@ vim.cmd([[
   Plug 'L3MON4D3/LuaSnip'
   Plug 'saadparwaiz1/cmp_luasnip'
 
+  " Linting
+  Plug 'mfussenegger/nvim-lint'
+
   " Fuzzy finder (Picker)
   Plug 'ibhagwan/fzf-lua', { 'branch': 'main' }
 

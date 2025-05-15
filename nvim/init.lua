@@ -25,6 +25,7 @@ local plugin_settings = {
   "regex",
   "autoindent",
   "colorizer",
+  "nvim-lint",
 }
 
 for _, module in ipairs(plugin_settings) do
