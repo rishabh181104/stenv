@@ -194,6 +194,7 @@ c.aliases = {
     'type': 'open https://monkeytype.com/',
     'chess': 'open https://www.chess.com/',
     'grok': 'open https://grok.com/',
+    'github': 'open https://github.com/',
 }
 
 c.content.blocking.enabled = True
