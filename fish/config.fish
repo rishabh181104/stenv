@@ -202,3 +202,5 @@ end
 #
 # 	exec dbus-run-session sway
 # end
+# Activate pywal16 environment
+# source ~/pywal16-env/bin/activate.fish

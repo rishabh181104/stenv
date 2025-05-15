@@ -3,7 +3,8 @@ window-decoration = false
 window-inherit-working-directory = true
 window-theme = dark
 
-theme = carbonfox
+theme = /home/ste/.cache/wal/ghostty.conf
+# theme = carbonfox
 
 # Mouse settings
 mouse-hide-while-typing = true
