@@ -6,7 +6,9 @@ TARGET_BASE="$HOME/.config"
 HOME_BASE="$HOME"
 
 # List of directories to replace
-DIRS_TO_REPLACE=("ghostty" "wal" "fastfetch" "foot" "kitty" "nvim" "wlogout" "fish" "hypr" "mako" "rofi" "waybar" "i3" "i3status" "picom" "pywal16-env" "qutebrowser")
+DIRS_TO_REPLACE=("ghostty" "wal" "fastfetch" "foot" "kitty" "nvim" "wlogout" "fish" "hypr" "mako" "rofi" "waybar" "i3" "i3status" "picom" "qutebrowser")
+
+DIRS_TO_REPLACE_HOME=("pywal16-env")
 
 # List of files to replace
 FILES_TO_REPLACE=("starship.toml")
@@ -32,6 +34,26 @@ for DIR_NAME in "${DIRS_TO_REPLACE[@]}"; do
 
   echo "📁 Copying $SRC to $TARGET_BASE"
   ln -s "$SRC" "$TARGET_BASE"
+done
+
+# === Replace Directories ===
+echo "🔁 Replacing Directories..."
+for DIR_NAME in "${DIRS_TO_REPLACE[@]}"; do
+  SRC="$SOURCE_BASE/$DIR_NAME"
+  DEST="$HOME_BASE/$DIR_NAME"
+
+  if [ ! -d "$SRC" ]; then
+    echo "❌ Source directory does not exist: $SRC"
+    continue
+  fi
+
+  if [ -d "$DEST" ]; then
+    echo "🗑️ Removing existing directory: $DEST"
+    rm -rf "$DEST"
+  fi
+
+  echo "📁 Copying $SRC to $TARGET_BASE"
+  ln -s "$SRC" "$HOME_BASE"
 done
 
 # === Replace Files ===
