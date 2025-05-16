@@ -6,7 +6,7 @@ TARGET_BASE="$HOME/.config"
 HOME_BASE="$HOME"
 
 # List of directories to replace
-DIRS_TO_REPLACE=("ghostty" "fastfetch" "foot" "kitty" "nvim" "wallust" "wlogout" "fish" "hypr" "mako" "rofi" "waybar" "i3" "i3status" "picom" "qutebrowser")
+DIRS_TO_REPLACE=("ghostty" "wal" "fastfetch" "foot" "kitty" "nvim" "wlogout" "fish" "hypr" "mako" "rofi" "waybar" "i3" "i3status" "picom" "pywal16-env" "qutebrowser")
 
 # List of files to replace
 FILES_TO_REPLACE=("starship.toml")
