@@ -201,6 +201,7 @@ c.aliases = {
     'github': 'open https://github.com/',
     'insta': 'open https://www.instagram.com/',
     'anime': 'open https://animekai.to/home/',
+    'manhwa': 'open https://manhwaread.com/home/',
 }
 
 c.content.blocking.enabled = True

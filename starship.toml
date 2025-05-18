@@ -31,7 +31,7 @@ format = """
       """
 
       command_timeout = 5000
-      add_newline = false
+      add_newline = true
 
       [directory]
       style = "bg:#1C2526"
@@ -114,7 +114,7 @@ format = """
       format = '[ $symbol ($version) ]($style)'
 
       [time]
-      disabled = false
+      disabled = true
       time_format = "%R"
       style = "bg:#1C2526"
       format = '[ $time ]($style)'
