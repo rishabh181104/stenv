@@ -4,7 +4,7 @@
   "passthrough": false,
   "position": "bottom",
   "fixed-center": true,
-  "ipc": true,
+  "ipc": false,
 
   "modules-left": [
     "custom/os",
