@@ -2,7 +2,8 @@ vim.cmd([[
   call plug#begin('~/.local/share/nvim/plugged')
 
   " Theme
-  Plug 'EdenEast/nightfox.nvim' " Vim-Plug
+  Plug 'EdenEast/nightfox.nvim' " Nightfox Theme
+  Plug 'rose-pine/neovim' " Rose-Pine Theme
 
   " LSP and completion
   Plug 'neovim/nvim-lspconfig'
