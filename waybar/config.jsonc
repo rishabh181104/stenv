@@ -59,7 +59,7 @@
   },
   "custom/lock": {
     "tooltip": false,
-    "on-click": "sh -c '(sleep 0.5s; hyprlock)' & disown",
+    "on-click": "sh -c '(wlogout)' & disown",
     "format": ""
   },
   "custom/stream_status": {
