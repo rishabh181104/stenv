@@ -1,132 +1,133 @@
-@import '/home/ste/.cache/wal/colors-waybar.css';
-/* change the user name to whatever your user name is currently it is set to ste which is my user name */
+@import "/home/ste/.cache/wal/colors-waybar.css";
 * {
-  font-family: "MesloLGS Nerd Font";
-  font-weight: bold;
+  font-family: MesloLGS Nerd Font;
+  font-size: 14px;
   min-height: 0;
-  font-size: 97%;
-  font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
+  /* padding-right: 2px; */
+  /* padding-left: 2px; */
+  /* padding-bottom: 0px; */
 }
 
-window#waybar {
-  background: rgba(0, 0, 0, 0.5);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 15px;
-  padding: 2px 4px;
-}
-
-tooltip {
-  background: @background;
-  border-radius: 12px;
-  border: 1px solid @border-color;
+#waybar {
+  background: transparent;
   color: @foreground;
+  margin: 2px 2px;
 }
 
 #workspaces {
-  padding: 0px 1px;
-  border-radius: 15px;
-  border-bottom: 2px solid @border-color;
-  font-weight: bold;
-  font-style: normal;
-  opacity: 0.8;
+  border-radius: 5px;
+  margin: 5px;
+  background: @background;
+  margin-left: 1rem;
 }
 
 #workspaces button {
-  color: @foreground;
-  box-shadow: none;
-  text-shadow: none;
-  border-radius: 30px;
-  padding: 0 4px;
-  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+  color: @color8;
+  border-radius: 5px;
+  padding: 0.4rem;
 }
 
 #workspaces button.active {
-  color: @color1;
-  background-color: @background-alt;
-  border-radius: 15px;
-  padding: 0 8px;
-}
-
-#workspaces button.focused {
-  color: @color2;
-}
-
-#workspaces button.urgent {
-  color: @color3;
-  border-radius: 10px;
+  color: @color4;
+  border-radius: 5px;
 }
 
 #workspaces button:hover {
-  color: @color1;
-  border-radius: 10px;
-  padding: 0 2px;
+  color: @color12;
+  border-radius: 5px;
 }
 
-.modules-center {
-  background-color: @background-alt;
-  border-radius: 10px;
-  padding: 4px;
-  border-bottom: 2px solid @border-color;
-  border-right: 1px solid @color1;
-  border-left: 1px solid @color1;
-}
-
+#custom-music,
+#tray,
 #backlight,
-#battery,
 #clock,
+#battery,
+#pulseaudio,
+#network,
 #cpu,
-#disk,
 #memory,
-#temperature,
-#tray {
-  color: @foreground;
-  padding: 0 6px;
+#custom-lock,
+#custom-power {
+  background-color: @background;
+  padding: 0.5rem 1rem;
+  margin: 5px 0;
+  border-radius: 0px 5px 5px 0px;
 }
 
-#temperature.critical {
+#custom-stream_status {
+  background-color: @background;
+  padding: 0.5rem 1rem;
+  margin: 5px 0;
+  border-radius: 0px 5px 5px 0px;
+}
+
+#custom-stream_status.up {
+  color: @color2;
+}
+
+#custom-stream_status.warning {
   color: @color3;
 }
 
-#battery.critical:not(.charging) {
-  color: @color3;
-  animation-name: blink;
-  animation-duration: 3s;
-  animation-timing-function: steps(12);
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-}
-
-@keyframes blink {
-to {
-  color: @background;
-}
-}
-
-#clock {
-  color: @foreground;
-  border-radius: 15px;
+#custom-stream_status.down {
+  color: @color1;
 }
 
 #memory {
-  color: @color4;
+  border-radius: 0px 5px 5px 0px;
 }
 
-#cpu {
-  color: @color5;
+#clock {
+  color: @color4;
+  border-radius: 5px;
+  margin-right: 1rem;
 }
 
 #battery {
-  color: @color6;
+  color: @color2;
 }
 
-#disk {
-  color: @color7;
+#battery.charging {
+  color: @color2;
 }
 
-#temperature {
-  color: @color8;
+#battery.warning:not(.charging) {
+  color: @color1;
 }
 
 #backlight {
-  color: @color9;
+  color: @color3;
+}
+
+#backlight,
+#battery {
+  border-radius: 0;
+}
+
+#pulseaudio {
+  color: @color1;
+  border-radius: 5px 0px 0px 5%;
+  margin-left: 1rem;
+}
+
+#custom-music {
+  color: @color5;
+  border-radius: 5px;
+}
+
+#custom-lock {
+  border-radius: 5px 0px 0px 5px;
+  color: @color8;
+}
+
+#custom-power {
+  margin-right: 1rem;
+  border-radius: 0px 5px 5px 0px;
+  color: @color1;
+}
+
+#tray {
+  margin-right: 1rem;
+  margin-left: 1rem;
+  border-radius: 5px;
 }
