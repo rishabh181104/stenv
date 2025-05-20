@@ -7,9 +7,12 @@
     "custom/stream_status",
     "hyprland/workspaces"
   ],
-  "modules-center": ["clock"],
+  "modules-center": [
+    "clock",
+    "tray"
+  ],
   "modules-right": [
-    "tray",
+    // "tray",
     // "network",
     "cpu",
     "memory",
