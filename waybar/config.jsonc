@@ -20,11 +20,35 @@
     "battery#forest",
     "custom/lock"
   ],
+  // "hyprland/workspaces": {
+  //   "format": "{name}: {icon}",
+  //   "format-icons": {
+  //     "active": "󰮯",
+  //     "default": "⚬",
+  //     "urgent": "👻"
+  //   }
+  // },
   "hyprland/workspaces": {
-    "format": "{name}: {icon}",
+    "disable-scroll": false,
+    "all-outputs": true,
+    "format": " {icon} ",
+    "on-click": "activate",
+    "persistent-workspaces": {
+      "*":[1,2,3,4,5,6,7,8,9,10]
+    },
     "format-icons": {
+      "1": "󰣇",
+      "2": "󰈹",
+      "3": "",
+      "4": "",
+      "3": "",
+      "6": "",
+      "7": "",
+      "8": "",
+      "9": "󰈹",
+      "10": "",
       "active": "󰮯",
-      "default": "⚬",
+      "default": "",
       "urgent": "👻"
     }
   },
