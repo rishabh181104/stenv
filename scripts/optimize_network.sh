@@ -3,10 +3,16 @@
 # Exit on any error
 set -e
 
-# Log file for debugging
-LOG_FILE="/tmp/optimize_network.log"
-exec 1> >(tee -a "$LOG_FILE")
-exec 2>&1
+# Check if running as root, if not re-execute with sudo
+if [ "$(id -u)" -ne 0 ]; then
+    log_message "Script requires root privileges. Re-executing with sudo..."
+    exec sudo "$0" "$@"
+fi
+
+# # Log file for debugging
+# LOG_FILE="/tmp/optimize_network.log"
+# exec 1> >(tee -a "$LOG_FILE")
+# exec 2>&1
 
 # Function to log messages
 log_message() {
@@ -31,14 +37,9 @@ for cmd in nmcli iw firewall-cmd; do
   fi
 done
 
-# Check if running as root
-if [ "$(id -u)" -ne 0 ]; then
-  log_error "This script must be run as root (use sudo)."
-fi
-
-# Get active Wi-Fi and Ethernet connections
-wifi_info=$(nmcli -t -f NAME,DEVICE,TYPE con show --active | grep wifi || true)
-eth_info=$(nmcli -t -f NAME,DEVICE,TYPE con show --active | grep ethernet || true)
+# Get active Wi-Fi and Ethernet connections (improved detection)
+wifi_info=$(nmcli -t -f NAME,DEVICE,TYPE con show --active | awk -F: '$3=="802-11-wireless" || $3=="wifi" {print $0}' || true)
+eth_info=$(nmcli -t -f NAME,DEVICE,TYPE con show --active | awk -F: '$3=="802-3-ethernet" || $3=="ethernet" {print $0}' || true)
 
 wifi_conn=""
 wifi_dev=""
@@ -58,6 +59,8 @@ fi
 # Check if any connections are active
 if [ -z "$wifi_conn" ] && [ -z "$eth_conn" ]; then
   log_message "No active Wi-Fi or Ethernet connections found."
+  nmcli -t -f NAME,DEVICE,TYPE con show --active | tee /tmp/nmcli_active_debug.log
+  log_message "Debug: See /tmp/nmcli_active_debug.log for active connections."
   exit 0
 fi
 
@@ -80,24 +83,24 @@ if [ -n "$wifi_conn" ]; then
       log_message "No iwlwifi module detected; skipping permanent power save config"
     fi
 
-    # Set public DNS servers
+    # Set public DNS servers (Cloudflare primary, Google secondary)
     nmcli connection modify "$wifi_conn" ipv4.dns "1.1.1.1,8.8.8.8" || log_error "Failed to set IPv4 DNS for $wifi_conn"
     nmcli connection modify "$wifi_conn" ipv6.dns "2606:4700:4700::1111,2001:4860:4860::8888" || log_error "Failed to set IPv6 DNS for $wifi_conn"
-    log_message "Set public DNS servers for $wifi_conn"
-  else
-    log_message "No active Wi-Fi connection found."
+    log_message "Set Cloudflare (primary) and Google (secondary) DNS servers for $wifi_conn"
+else
+  log_message "No active Wi-Fi connection found."
 fi
 
 # Configure Ethernet settings
 if [ -n "$eth_conn" ]; then
   log_message "Configuring Ethernet connection: $eth_conn (device: $eth_dev)"
 
-    # Set public DNS servers
-    nmcli connection modify "$eth_conn" ipv4.dns "8.8.8.8,1.1.1.1" || log_error "Failed to set IPv4 DNS for $eth_conn"
-    nmcli connection modify "$eth_conn" ipv6.dns "2001:4860:4860::8888,2606:4700:4700::1111" || log_error "Failed to set IPv6 DNS for $eth_conn"
-    log_message "Set public DNS servers for $eth_conn"
-  else
-    log_message "No active Ethernet connection found."
+    # Set public DNS servers (Cloudflare primary, Google secondary)
+    nmcli connection modify "$eth_conn" ipv4.dns "1.1.1.1,8.8.8.8" || log_error "Failed to set IPv4 DNS for $eth_conn"
+    nmcli connection modify "$eth_conn" ipv6.dns "2606:4700:4700::1111,2001:4860:4860::8888" || log_error "Failed to set IPv6 DNS for $eth_conn"
+    log_message "Set Cloudflare (primary) and Google (secondary) DNS servers for $eth_conn"
+else
+  log_message "No active Ethernet connection found."
 fi
 
 # Configure firewall to allow ICMP
@@ -125,7 +128,7 @@ if [ -n "$wifi_conn" ]; then
     log_message "Reactivated Wi-Fi connection: $wifi_conn"
   else
     log_message "Failed to reactivate $wifi_conn"
-  fi
+fi
 fi
 if [ -n "$eth_conn" ]; then
   if nmcli connection up "$eth_conn" >/dev/null; then
