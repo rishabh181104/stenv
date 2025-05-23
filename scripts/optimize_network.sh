@@ -30,12 +30,12 @@ command_exists() {
   command -v "$1" >/dev/null 2>&1
 }
 
-# Check for required commands
-for cmd in nmcli iw firewall-cmd; do
-  if ! command_exists "$cmd"; then
-    log_error "$cmd is not installed. Install it with 'sudo zypper install $cmd'."
-  fi
-done
+# # Check for required commands
+# for cmd in nmcli iw firewall-cmd; do
+#   if ! command_exists "$cmd"; then
+#     log_error "$cmd is not installed. Install it with 'sudo pacman install $cmd'."
+#   fi
+# done
 
 # Get active Wi-Fi and Ethernet connections (improved detection)
 wifi_info=$(nmcli -t -f NAME,DEVICE,TYPE con show --active | awk -F: '$3=="802-11-wireless" || $3=="wifi" {print $0}' || true)
@@ -103,13 +103,13 @@ else
   log_message "No active Ethernet connection found."
 fi
 
-# Configure firewall to allow ICMP
-log_message "Configuring firewall to allow ICMP"
-if firewall-cmd --add-protocol=icmp --permanent >/dev/null && firewall-cmd --reload >/dev/null; then
-  log_message "ICMP protocol allowed in firewall"
-else
-  log_message "Failed to configure firewall; check firewalld status"
-fi
+# # Configure firewall to allow ICMP
+# log_message "Configuring firewall to allow ICMP"
+# if firewall-cmd --add-protocol=icmp --permanent >/dev/null && firewall-cmd --reload >/dev/null; then
+#   log_message "ICMP protocol allowed in firewall"
+# else
+#   log_message "Failed to configure firewall; check firewalld status"
+# fi
 
 # Restart NetworkManager to apply changes
 log_message "Restarting NetworkManager"

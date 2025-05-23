@@ -55,9 +55,9 @@ if [ "$EUID" -eq 0 ]; then
   exit 1
 fi
 
-# Check if zypper exists
-if ! command_exists zypper; then
-  print_error "zypper package manager not found. This script is for openSUSE systems."
+# Check if pacman exists
+if ! command_exists pacman; then
+  print_error "pacman package manager not found. This script is for openSUSE systems."
   exit 1
 fi
 
@@ -132,26 +132,24 @@ PACKAGES=(
   hyprland-qtutils
   hyprlock
   hyprpicker
-  libhyprcursor0
-  libhyprgraphics0
-  libhyprlang2
-  libhyprutils4
+  # libhyprcursor0
+  # libhyprgraphics0
+  # libhyprlang2
+  # libhyprutils4
   xdg-desktop-portal-hyprland
   xdg-desktop-portal-wlr
   xdg-desktop-portal
   grim
   slurp
   waybar
-  NetworkManager
-  NetworkManager-applet
+  networkmanager
   swww
   blueman
-  google-noto-coloremoji-fonts
-  emojione-color-font
+  # emojione-color-font
   fastfetch
   foot
   fish
-  xwayland
+  # xwayland
   kitty
   mako
   neovim
@@ -159,9 +157,9 @@ PACKAGES=(
   vim
   rofi-wayland
   starship
-  wlogout
+  # wlogout
   wl-clipboard
-  libwlroots12
+  # libwlroots12
   git
   rustup
   go
@@ -175,45 +173,45 @@ PACKAGES=(
   flameshot
   ghostty
   thunar
-  xorg-x11
-  xorg-x11-driver-video
-  xorg-x11-essentials
-  xorg-x11-fonts
-  xorg-x11-fonts-converted
-  xorg-x11-fonts-core
-  xorg-x11-fonts-legacy
-  xorg-x11-server
-  xorg-x11-server-Xvfb
-  xorg-x11-util-devel
-  perl-X11-Protocol
-  libxkbcommon-x11-0
-  libxkbcommon-x11-0-32bit
-  libxkbcommon-x11-devel
-  libX11-6
-  libX11-data
-  libX11-devel
-  libX11-xcb1
-  libva-x11-2
-  libQt5X11Extras5
-  libnvidia-egl-x111
-  ghostscript-x11
-  dbus-1-x11
-  xorg-cf-files
-  xorg-scripts
-  xorg-sgml-doctools
-  xorgproto-devel
-  xclip
-  lxappearance
-  openSUSE-repos-Tumbleweed-NVIDIA
-  dejavu-fonts
-  python313-adblock
+  # xorg-x11
+  # xorg-x11-driver-video
+  # xorg-x11-essentials
+  # xorg-x11-fonts
+  # xorg-x11-fonts-converted
+  # xorg-x11-fonts-core
+  # xorg-x11-fonts-legacy
+  # xorg-x11-server
+  # xorg-x11-server-Xvfb
+  # xorg-x11-util-devel
+  # perl-X11-Protocol
+  # libxkbcommon-x11-0
+  # libxkbcommon-x11-0-32bit
+  # libxkbcommon-x11-devel
+  # libX11-6
+  # libX11-data
+  # libX11-devel
+  # libX11-xcb1
+  # libva-x11-2
+  # libQt5X11Extras5
+  # libnvidia-egl-x111
+  # ghostscript-x11
+  # dbus-1-x11
+  # xorg-cf-files
+  # xorg-scripts
+  # xorg-sgml-doctools
+  # xorgproto-devel
+  # xclip
+  # lxappearance
+  # openSUSE-repos-Tumbleweed-NVIDIA
+  # dejavu-fonts
+  # python313-adblock
   bat
 )
 
 # Function to install packages
 install_packages() {
   print_header "Updating Package List"
-  if ! sudo zypper refresh; then
+  if ! sudo pacman -Syyu; then
     print_error "Failed to update package list"
     exit 1
   fi
@@ -222,7 +220,7 @@ install_packages() {
   print_header "Installing Packages"
   print_warning "This may take a while. Please be patient..."
   progress_bar 5 &
-  if ! sudo zypper install "${PACKAGES[@]}"; then
+  if ! sudo pacman -S "${PACKAGES[@]}"; then
     print_error "Failed to install packages"
     exit 1
   fi

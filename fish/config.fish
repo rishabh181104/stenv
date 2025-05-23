@@ -38,15 +38,6 @@ alias grep='grep --color=auto'
 alias brght='brightnessctl set'
 
 alias convert='ffmpeg -i $argv[1] -filter_complex "[0:v] fps=10,scale=320:-1,split [a][b];[a] palettegen [p];[b][p] paletteuse" $argv[2]'
-alias upgrade='sudo zypper ref && sudo zypper dup -y --allow-vendor-change'
-alias update='sudo zypper ref'
-alias recom='sudo zypper install-new-recommends'
-alias remove='sudo zypper remove'
-alias search='zypper se'
-alias install='sudo zypper in -y'
-alias remove-unwanted='sudo zypper rm $(zypper packages --unneeded)'
-alias remove-cache='sudo zypper clean --all'
-alias zlock='sudo zypper addlock'
 
 alias getgit='~/stenv/scripts/get_token.sh'
 

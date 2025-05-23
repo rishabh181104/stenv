@@ -10,12 +10,11 @@ command_exists() {
 
 # Update system packages
 echo "Updating system packages..."
-sudo zypper refresh
-sudo zypper update -y
+sudo pacman -Syy
 
 # Install basic tools
 echo "Installing basic tools (git, curl, neovim, unzip, make)..."
-sudo zypper install -y git curl neovim unzip make lua-language-server StyLua
+sudo pacman -S git curl neovim unzip make lua-language-server stylua
 
 # Install Vim-Plug
 echo "Installing Vim-Plug..."
@@ -26,11 +25,11 @@ curl -fLo "$VIM_PLUG_DIR/plug.vim" --create-dirs \
 
 # Install fzf (for fzf-lua)
 echo "Installing fzf..."
-sudo zypper install -y fzf
+sudo pacman -S fzf
 
 # Install Node.js and npm (for LSP servers like tsserver, cssls)
 echo "Installing Node.js and npm..."
-sudo zypper install -y nodejs npm
+sudo pacman -S nodejs npm
 
 # Install LSP servers
 echo "Installing LSP servers..."
@@ -60,24 +59,24 @@ cargo install exo
 
 # Install clangd (for C++)
 echo "Installing clangd..."
-sudo zypper install -y clang astyle
+sudo pacman -S clang astyle
 
 # Install Java (for jdtls)
 echo "Installing Java..."
-sudo zypper install -y java-17-openjdk java-17-openjdk-devel
+sudo pacman -S java-17-openjdk java-17-openjdk-devel
 
 # Install Python and pip (for debugpy, Jupyter, IPython)
 echo "Installing Python and pip..."
-sudo zypper install -y python313 python313-pip python313-debugpy python313-ipython python313-black
+sudo pacman -S python313 python313-pip python313-debugpy python313-ipython python313-black
 # pip3 install --user debugpy jupytext ipython
 
 # Install PostgreSQL client (for vim-dadbod)
 echo "Installing PostgreSQL client..."
-sudo zypper install -y postgresql postgresql-devel
+sudo pacman -S postgresql postgresql-devel
 
 # Install gdb (for C++ debugging)
 echo "Installing gdb..."
-sudo zypper install -y gdb
+sudo pacman -S gdb
 
 # Clone plugins (handled by Vim-Plug, but ensure directory exists)
 echo "Setting up plugin directory..."

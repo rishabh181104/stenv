@@ -28,11 +28,6 @@ print_header() { echo -e "${BLUE}${BOLD}===> $1${NC}"; }
 print_success() { echo -e "${GREEN}${BOLD}[✔] $1${NC}"; }
 print_error() { echo -e "${RED}${BOLD}[✘] $1${NC}"; exit 1; }
 
-# Check for openSUSE Tumbleweed
-if ! grep -qi "tumbleweed" /etc/os-release; then
-  print_error "This script is designed for openSUSE Tumbleweed."
-fi
-
 # Banner
 clear
 echo -e "${YELLOW}${BOLD}"
@@ -45,16 +40,16 @@ echo
 
 # Update package list and install dependencies
 print_header "Updating package list and installing dependencies..."
-sudo zypper --non-interactive refresh > /dev/null 2>&1 &
+sudo pacman -Syyu > /dev/null 2>&1 &
 spinner $!
-sudo zypper --non-interactive install python3 python3-pip python3-virtualenv git ImageMagick > /dev/null 2>&1 &
+sudo pacman -Syu python python-pip python-virtualenv git imagemagick > /dev/null 2>&1 &
 spinner $!
 [ $? -eq 0 ] || print_error "Failed to install dependencies. Check your connection or permissions."
 
 # Create and activate virtual environment
 print_header "Creating virtual environment..."
 rm -rf ~/pywal16-env  # Remove old env if it exists
-python3 -m virtualenv ~/pywal16-env > /dev/null 2>&1 &
+python -m virtualenv ~/pywal16-env > /dev/null 2>&1 &
 spinner $!
 source ~/pywal16-env/bin/activate || print_error "Failed to activate virtual environment."
 
