@@ -18,7 +18,7 @@ After=systemd-user-sessions.service getty.target
 Before=getty@tty1.service
 
 [Service]
-ExecStart=-/sbin/agetty --autologin ste --noclear --keep-baud tty1 38400 linux
+ExecStart=-/sbin/agetty --autologin $USER_NAME --noclear --keep-baud tty1 38400 linux
 Restart=always
 RestartSec=0
 Type=idle

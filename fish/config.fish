@@ -39,6 +39,9 @@ alias brght='brightnessctl set'
 
 alias convert='ffmpeg -i $argv[1] -filter_complex "[0:v] fps=10,scale=320:-1,split [a][b];[a] palettegen [p];[b][p] paletteuse" $argv[2]'
 
+alias install='sudo pacman -S'
+alias remove='sudo pacman -Rns'
+
 alias getgit='~/stenv/scripts/get_token.sh'
 
 alias c='clear'
