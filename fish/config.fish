@@ -17,7 +17,7 @@ set -Ux __GLX_VENDOR_LIBRARY_NAME nvidia
 set -Ux MOZ_ENABLE_WAYLAND 1
 set -gx EDITOR nvim
 set -gx TERMINAL alacritty
-set -gx BROWSER firefox
+set -gx BROWSER google-chrome-stable
 set -gx FILE ~/.config/fish/config.fish
 set -gx STARSHIP_CONFIG ~/.config/starship.toml
 set -gx VISUAL nvim
